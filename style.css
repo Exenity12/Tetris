@@ -30,22 +30,11 @@
 }
 
 .deleteThis {
-    position: absolute;
-    top: 1000px;
-    left: 1000px;
     height: 40px;
     width: 40px;
     outline: 1px solid black;
 }
 
-.itemDelete {
-    position: absolute;
-    top: 1000px;
-    left: 1000px;
-    height: 40px;
-    width: 40px;
-    outline: 1px solid black;
-}
 
 .activeElementAll {
     position: absolute;
