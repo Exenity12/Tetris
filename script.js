@@ -46,7 +46,7 @@ function nextElement(){
 
 function fillingTheArray(){
   let n = 0
-  while(n < 2){
+  while(n < 4){
     state.coordinatesAllFallElements.push(state.childOfActiveFigure[n]);
     n++;
   };
@@ -73,9 +73,6 @@ function checkingFallTheElement(){
     return false;
   };
 };
-
-
-
 
 
 
@@ -129,5 +126,11 @@ function deleteUsefullItem() {
   };
 };
 
+
+
+function moveTurn(){
+  console.log(state.activeElement);
+  state.activeElement.classList = "horizantlyFigure";
+}
 
 

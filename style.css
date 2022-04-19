@@ -44,26 +44,243 @@
     flex-direction: row;
 }
 
-.verticallyFigure {
+.itemElementOfFigure{
     position: absolute;
-    display: flex;
-    flex-direction: column;
-
-}
-
-.horizontallyFigure {
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-}
-
-.itemElementOfFigure {
-    position: relative;
     height: 40px;
     width: 40px;
     background-color: red;
     outline: 1px solid black;
 }
+
+.verticallyFigure{
+    position: absolute;
+}
+
+.verticallyFigure .itemElementOfFigureOne{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.verticallyFigure .itemElementOfFigureTwo{
+    position: absolute;
+    top: 40px;
+    left: 0px;
+}
+
+.verticallyFigure .itemElementOfFigureThree{
+    position: absolute;
+    top: 80px;
+    left: 0px;
+}
+
+.verticallyFigure .itemElementOfFigureFour{
+    position: absolute;
+    top: 120px;
+    left: 0px;
+}
+
+.horizantlyFigure{
+    position: absolute;
+}
+
+.horizantlyFigure .itemElementOfFigureOne{
+    position: absolute;
+    top: 40px;
+    left: -40px;
+}
+
+.horizantlyFigure .itemElementOfFigureTwo{
+    position: absolute;
+    top: 40px;
+    left: 0px;
+}
+
+.horizantlyFigure .itemElementOfFigureThree{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.horizantlyFigure .itemElementOfFigureFour{
+    position: absolute;
+    top: 40px;
+    left: 80px;
+}
+/*    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa  */
+.squareFigure{
+    position: absolute;
+}
+
+.squareFigure .itemElementOfFigureOne{
+    position: absolute;
+    top: 0px;
+    left: 0px
+}
+
+.squareFigure .itemElementOfFigureTwo{
+    position: absolute;
+    top: 0px;
+    left: 40px;
+}
+
+.squareFigure .itemElementOfFigureThree{
+    position: absolute;
+    top: 40px;
+    left: 0px;
+}
+
+.squareFigure .itemElementOfFigureFour{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+/*    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa  */
+.horFigure{
+    position: absolute;
+}
+
+.horFigure .itemElementOfFigureOne{
+    position: absolute;
+    top: 40px;
+    left: 0px;
+}
+
+.horFigure .itemElementOfFigureTwo{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.horFigure .itemElementOfFigureThree{
+    position: absolute;
+    top: 40px;
+    left: 80px;
+}
+
+.horFigure .itemElementOfFigureFour{
+    position: absolute;
+    top: 0px;
+    left: 80px;
+}
+
+/*    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa  */
+.reHorFigure{
+    position: absolute;
+}
+
+.reHorFigure .itemElementOfFigureOne{
+    position: absolute;
+    top: 40px;
+    left: 0px;
+}
+
+.reHorFigure .itemElementOfFigureTwo{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.reHorFigure .itemElementOfFigureThree{
+    position: absolute;
+    top: 40px;
+    left: 80px;
+}
+
+.reHorFigure .itemElementOfFigureFour{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+/*    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa  */
+.pyramidFigure{
+    position: absolute;
+}
+
+.pyramidFigure .itemElementOfFigureOne{
+    position: absolute;
+    top: 40px;
+    left: 0px;
+}
+
+.pyramidFigure .itemElementOfFigureTwo{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.pyramidFigure .itemElementOfFigureThree{
+    position: absolute;
+    top: 40px;
+    left: 80px;
+}
+
+.pyramidFigure .itemElementOfFigureFour{
+    position: absolute;
+    top: 0px;
+    left: 40px;
+}
+
+/*    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa  */
+.lightningFigure{
+    position: absolute;
+}
+
+.lightningFigure .itemElementOfFigureOne{
+    position: absolute;
+    top: 0px;
+    left: 40px;
+}
+
+.lightningFigure .itemElementOfFigureTwo{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.lightningFigure .itemElementOfFigureThree{
+    position: absolute;
+    top: 40px;
+    left: 0px;
+}
+
+.lightningFigure .itemElementOfFigureFour{
+    position: absolute;
+    top: 80px;
+    left: 0px;
+}
+
+/*    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa  */
+.reLightningFigure{
+    position: absolute;
+}
+
+.reLightningFigure .itemElementOfFigureOne{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.reLightningFigure .itemElementOfFigureTwo{
+    position: absolute;
+    top: 40px;
+    left: 0px;
+}
+
+.reLightningFigure .itemElementOfFigureThree{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.reLightningFigure .itemElementOfFigureFour{
+    position: absolute;
+    top: 80px;
+    left: 40px;
+}
+
 
 
 .button {
@@ -87,5 +304,11 @@
 .button-clear {
     position: absolute;
     top: 570px;
+    left: 600px;
+}
+
+.button-turn {
+    position: absolute;
+    top: 530px;
     left: 600px;
 }

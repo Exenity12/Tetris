@@ -25,17 +25,37 @@ while(idActiveFigure < allActiveFigure){
 };
 
 function createNewElement() {
-    let random = getRandomIntInclusive(0, 1);
+    let random = getRandomIntInclusive(0, 6);
     let nextFigure;
-    if(random){
-        nextFigure = "horizontallyFigure";
-    } else {
+    if(random == 0){
         nextFigure = "verticallyFigure";
+    } else if(random == 1){
+        nextFigure = "squareFigure";
+    } else if(random == 2){
+        nextFigure = "horFigure";
+    } else if(random == 3){
+        nextFigure = "reHorFigure";
+    } else if(random == 4){
+        nextFigure = "pyramidFigure";
+    } else if(random == 5){
+        nextFigure = "lightningFigure";
+    } else if(random == 6){ 
+        nextFigure = "reLightningFigure";
     };
     allActiveElement.innerHTML += `
     <div class="${nextFigure}" id="id_0${idActiveFigure}">
-        <div class="itemElementOfFigure"></div>
-        <div class="itemElementOfFigure"></div>
+        <div class="itemElementOfFigureOne">
+            <div class="itemElementOfFigure"></div>
+        </div>
+        <div class="itemElementOfFigureTwo">
+            <div class="itemElementOfFigure"></div>
+        </div>
+        <div class="itemElementOfFigureThree">
+            <div class="itemElementOfFigure"></div>
+        </div>
+        <div class="itemElementOfFigureFour">
+            <div class="itemElementOfFigure"></div>
+        </div>
     </div>
     `;
     idActiveFigure++;
