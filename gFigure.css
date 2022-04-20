@@ -1,0 +1,139 @@
+.GFigure{
+    position: absolute;
+}
+
+.GFigure .itemElementOfFigureOne{
+    position: absolute;
+    top: 40px;
+    left: 0px;
+}
+
+.GFigure .itemElementOfFigureTwo{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.GFigure .itemElementOfFigureThree{
+    position: absolute;
+    top: 40px;
+    left: 80px;
+}
+
+.GFigure .itemElementOfFigureFour{
+    position: absolute;
+    top: 0px;
+    left: 80px;
+}
+
+
+
+
+
+
+
+
+
+
+.GFigureLeft{
+    position: absolute;
+}
+
+.GFigureLeft .itemElementOfFigureOne{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.GFigureLeft .itemElementOfFigureTwo{
+    position: absolute;
+    top: 40px;
+    left: 0px;
+}
+
+.GFigureLeft .itemElementOfFigureThree{
+    position: absolute;
+    top: 80px;
+    left: 0px;
+}
+
+.GFigureLeft .itemElementOfFigureFour{
+    position: absolute;
+    top: 80px;
+    left: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.GFigureDown{
+    position: absolute;
+}
+
+.GFigureDown .itemElementOfFigureOne{
+    position: absolute;
+    top: 40px;
+    left: 80px;
+}
+
+.GFigureDown .itemElementOfFigureTwo{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.GFigureDown .itemElementOfFigureThree{
+    position: absolute;
+    top: 40px;
+    left: 0px;
+}
+
+.GFigureDown .itemElementOfFigureFour{
+    position: absolute;
+    top: 80px;
+    left: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+.GFigureRight{
+    position: absolute;
+}
+
+.GFigureRight .itemElementOfFigureOne{
+    position: absolute;
+    top: 80px;
+    left: 40px;
+}
+
+.GFigureRight .itemElementOfFigureTwo{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.GFigureRight .itemElementOfFigureThree{
+    position: absolute;
+    top: 0px;
+    left: 40px;
+}
+
+.GFigureRight .itemElementOfFigureFour{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}

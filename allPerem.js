@@ -19,28 +19,31 @@ var idActiveFigure = 0;
 var allActiveFigure = 15;
 
 
-
-while(idActiveFigure < allActiveFigure){
-    createNewElement();
-};
-
 function createNewElement() {
     let random = getRandomIntInclusive(0, 6);
     let nextFigure;
+    let styleAllFigure;
     if(random == 0){
         nextFigure = "verticallyFigure";
+        styleAllFigure = ["horizantlyFigure", "verticallyFigure"];
     } else if(random == 1){
         nextFigure = "squareFigure";
+        styleAllFigure = ["squareFigure"];
     } else if(random == 2){
-        nextFigure = "horFigure";
+        nextFigure = "GFigure";
+        styleAllFigure = ["GFigureLeft", "GFigureDown", "GFigureRight", "GFigure"];
     } else if(random == 3){
-        nextFigure = "reHorFigure";
+        nextFigure = "reGFigure";
+        styleAllFigure = ["reGFigureLeft", "reGFigureDown", "reGFigureRight", "reGFigure"];
     } else if(random == 4){
         nextFigure = "pyramidFigure";
+        styleAllFigure = ["pyramidFigureLeft", "pyramidFigureDown", "pyramidFigureRight", "pyramidFigure"];
     } else if(random == 5){
         nextFigure = "lightningFigure";
+        styleAllFigure = ["lightningFigureLeft", "lightningFigureDown", "lightningFigureRight", "lightningFigure"];
     } else if(random == 6){ 
         nextFigure = "reLightningFigure";
+        styleAllFigure = ["reLightningFigureLeft", "reLightningFigureDown", "reLightningFigureRight", "reLightningFigure"];
     };
     allActiveElement.innerHTML += `
     <div class="${nextFigure}" id="id_0${idActiveFigure}">
@@ -58,6 +61,7 @@ function createNewElement() {
         </div>
     </div>
     `;
+    state.styleAllFigure.push(styleAllFigure);
     idActiveFigure++;
 }
 
@@ -87,4 +91,11 @@ var state = {
     coordinatesActiveElement: {top: -40, left: 120},
     childOfActiveFigure: "",
     idActiveElement: 0,
+    styleAllFigure: [],
+    numberOfStyleFigure: 0,
+    quantityDeleteString: 1,
+};
+
+while(idActiveFigure < allActiveFigure){
+    createNewElement();
 };

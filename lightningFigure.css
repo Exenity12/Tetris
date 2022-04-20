@@ -1,0 +1,151 @@
+.lightningFigure{
+    position: absolute;
+}
+
+.lightningFigure .itemElementOfFigureOne{
+    position: absolute;
+    top: 0px;
+    left: 40px;
+}
+
+.lightningFigure .itemElementOfFigureTwo{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.lightningFigure .itemElementOfFigureThree{
+    position: absolute;
+    top: 40px;
+    left: 0px;
+}
+
+.lightningFigure .itemElementOfFigureFour{
+    position: absolute;
+    top: 80px;
+    left: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.lightningFigureLeft{
+    position: absolute;
+}
+
+.lightningFigureLeft .itemElementOfFigureOne{
+    position: absolute;
+    top: 80px;
+    left: 40px;
+}
+
+.lightningFigureLeft .itemElementOfFigureTwo{
+    position: absolute;
+    top: 80px;
+    left: 0px;
+}
+
+.lightningFigureLeft .itemElementOfFigureThree{
+    position: absolute;
+    top: 40px;
+    left: 0px;
+}
+
+.lightningFigureLeft .itemElementOfFigureFour{
+    position: absolute;
+    top: 40px;
+    left: -40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.lightningFigureDown{
+    position: absolute;
+}
+
+.lightningFigureDown .itemElementOfFigureOne{
+    position: absolute;
+    top: 80px;
+    left: -40px;
+}
+
+.lightningFigureDown .itemElementOfFigureTwo{
+    position: absolute;
+    top: 40px;
+    left: -40px;
+}
+
+.lightningFigureDown .itemElementOfFigureThree{
+    position: absolute;
+    top: 40px;
+    left: 0px;
+}
+
+.lightningFigureDown .itemElementOfFigureFour{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.lightningFigureRight{
+    position: absolute;
+}
+
+.lightningFigureRight .itemElementOfFigureOne{
+    position: absolute;
+    top: 0px;
+    left: -40px;
+}
+
+.lightningFigureRight .itemElementOfFigureTwo{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.lightningFigureRight .itemElementOfFigureThree{
+    position: absolute;
+    top: 40px;
+    left: 0px;
+}
+
+.lightningFigureRight .itemElementOfFigureFour{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}

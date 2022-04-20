@@ -39,6 +39,7 @@ function spotItIsTable(reRun) {
 };
 
 function nextElement(){
+  state.numberOfStyleFigure = 0;
   state.idActiveFigure++;
   state.coordinatesActiveElement = {top: -40, left: 120};
   deleteString();
@@ -91,7 +92,7 @@ function checkingTheDrop(){
       };
       numberOfSearchItem++;
     }
-    state.idActiveElement++;
+  state.idActiveElement++;
   };
   return false;
 };
@@ -103,6 +104,7 @@ function deleteString(){
     newArray = state.coordinatesAllFallElements.filter(item => Math.round(item.getBoundingClientRect().y) == numberOfFindString * 40);
     if(newArray.length >= 10){
       newArray.forEach((item) => {item.classList = "deleteThis"});
+      let h = 0;
       state.coordinatesAllFallElements.forEach((item) => {
         if(item.getBoundingClientRect().y < numberOfFindString * 40){
           item.style.top = 40 + "px";
@@ -124,13 +126,54 @@ function deleteUsefullItem() {
     };
     q++;
   };
+  state.coordinatesAllFallElements = state.coordinatesAllFallElements;
 };
 
 
-
 function moveTurn(){
-  console.log(state.activeElement);
-  state.activeElement.classList = "horizantlyFigure";
+  if(state.numberOfStyleFigure >= state.styleAllFigure[state.idActiveFigure].length){
+    state.numberOfStyleFigure = 0;
+  };
+  state.activeElement.classList = state.styleAllFigure[state.idActiveFigure][state.numberOfStyleFigure];
+  state.numberOfStyleFigure++;
 }
 
 
+document.addEventListener('keydown', function(event){
+    if (event.code == "ArrowLeft") {
+        moveLeft();
+    }
+});
+document.addEventListener('keydown', function(event){
+    if (event.code == "ArrowUp") {
+        moveTurn();
+    }
+});
+document.addEventListener('keydown', function(event){
+    if (event.code == "ArrowRight") {
+        moveRight();
+    }
+});
+
+
+
+
+
+
+
+
+
+
+// while(h < state.coordinatesAllFallElements.length){
+      //   if(state.coordinatesAllFallElements[h].getBoundingClientRect().y < numberOfFindString * 40){
+      //     state.coordinatesAllFallElements[h].style.top = 40 + "px";
+      //   };
+      //   h++;
+      // };
+
+
+// state.coordinatesAllFallElements.forEach((item) => {
+//         if(item.getBoundingClientRect().y < numberOfFindString * 40){
+//           item.style.top = 40 + "px";
+//         };
+//       });

@@ -1,0 +1,140 @@
+.pyramidFigure{
+    position: absolute;
+}
+
+.pyramidFigure .itemElementOfFigureOne{
+    position: absolute;
+    top: 40px;
+    left: 0px;
+}
+
+.pyramidFigure .itemElementOfFigureTwo{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.pyramidFigure .itemElementOfFigureThree{
+    position: absolute;
+    top: 40px;
+    left: 80px;
+}
+
+.pyramidFigure .itemElementOfFigureFour{
+    position: absolute;
+    top: 0px;
+    left: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+.pyramidFigureLeft{
+    position: absolute;
+}
+
+.pyramidFigureLeft .itemElementOfFigureOne{
+    position: absolute;
+    top: 80px;
+    left: 0px;
+}
+
+.pyramidFigureLeft .itemElementOfFigureTwo{
+    position: absolute;
+    top: 40px;
+    left: 0px;
+}
+
+.pyramidFigureLeft .itemElementOfFigureThree{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.pyramidFigureLeft .itemElementOfFigureFour{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+.pyramidFigureDown{
+    position: absolute;
+}
+
+.pyramidFigureDown .itemElementOfFigureOne{
+    position: absolute;
+    top: 40px;
+    left: 0px;
+}
+
+.pyramidFigureDown .itemElementOfFigureTwo{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.pyramidFigureDown .itemElementOfFigureThree{
+    position: absolute;
+    top: 40px;
+    left: 80px;
+}
+
+.pyramidFigureDown .itemElementOfFigureFour{
+    position: absolute;
+    top: 80px;
+    left: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.pyramidFigureRight{
+    position: absolute;
+}
+
+.pyramidFigureRight .itemElementOfFigureOne{
+    position: absolute;
+    top: 40px;
+    left: 0px;
+}
+
+.pyramidFigureRight .itemElementOfFigureTwo{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.pyramidFigureRight .itemElementOfFigureThree{
+    position: absolute;
+    top: 80px;
+    left: 40px;
+}
+
+.pyramidFigureRight .itemElementOfFigureFour{
+    position: absolute;
+    top: 0px;
+    left: 40px;
+}
