@@ -1,159 +1,133 @@
+var arrayString = [];
+var arrayTable = [];
+
 function startGame() {
   console.log("Start!");
+  let petem = 0;
+  while(petem < tableSquareVertSize){
+    let mepet = 0;
+    var arrayString = [];
+    while(mepet < tableSquareHorizonSize){
+      arrayString.push(document.querySelector(`#id_${mepet}_${petem}`))
+      mepet++;
+    };
+    arrayTable.push(arrayString);
+    petem++;
+  }
   timer = setInterval(moveActiveFigure, 500);
-  createNewElement();
 };
 
 function moveActiveFigure() {
-  state.activeElement = document.querySelector(`#${"id_0" + state.idActiveFigure}`);
-  state.childOfActiveFigure = state.activeElement.querySelectorAll(`.itemElementOfFigure`);
-  state.coordinatesActiveElement.top += 40;
-  if(checkingTheDropOfElement()){
+  arrayTable[state.PositionActiveElementOne.top][state.PositionActiveElementOne.left].innerHTML = "0";
+  arrayTable[state.PositionActiveElementTwo.top][state.PositionActiveElementTwo.left].innerHTML = "0";
+  state.PositionActiveElementOne.top++;
+  state.PositionActiveElementTwo.top++;
+  if(checkDropOnAnotherElement()){
     return;
   };
-  state.activeElement.style.left = state.coordinatesActiveElement.left + "px";
-  state.activeElement.style.top = state.coordinatesActiveElement.top + "px";
-  if(state.childOfActiveFigure.length){
-    if(checkingTheDrop()){
-      return;
-    };
+  arrayTable[state.PositionActiveElementOne.top][state.PositionActiveElementOne.left].innerHTML = "1";
+  arrayTable[state.PositionActiveElementTwo.top][state.PositionActiveElementTwo.left].innerHTML = "1";
+  nextElement();
+};
+
+
+function checkDropOnAnotherElement(){
+  if(arrayTable[state.PositionActiveElementOne.top][state.PositionActiveElementOne.left].innerHTML == "1" || arrayTable[state.PositionActiveElementTwo.top][state.PositionActiveElementTwo.left].innerHTML == "1"){
+    state.PositionActiveElementOne.top--;
+    state.PositionActiveElementTwo.top--;
+    arrayTable[state.PositionActiveElementOne.top][state.PositionActiveElementOne.left].innerHTML = "1";
+    arrayTable[state.PositionActiveElementTwo.top][state.PositionActiveElementTwo.left].innerHTML = "1";
+    state.coordinatesAllFallElements.push(state.PositionActiveElementOne);
+    state.coordinatesAllFallElements.push(state.PositionActiveElementTwo);
+    state.PositionActiveElementOne = {top: 0, left: 7};
+    state.PositionActiveElementTwo = {top: 0, left: 8};
+    return;
   };
 };
 
-function moveLeft(){
-  state.coordinatesActiveElement.left -= 40;
-  spotItIsTable(40);
-  state.activeElement.style.left = state.coordinatesActiveElement.left + "px";
+
+ 
+
+function nextElement() {
+  if(state.PositionActiveElementOne.top == 14 || state.PositionActiveElementTwo.top == 14){
+    state.coordinatesAllFallElements.push(state.PositionActiveElementOne);
+    state.coordinatesAllFallElements.push(state.PositionActiveElementTwo);
+    state.PositionActiveElementOne = {top: 0, left: 7};
+    state.PositionActiveElementTwo = {top: 0, left: 8};
+    fall();
+  };
 }
 
-function moveRight(){
-  state.coordinatesActiveElement.left += 40;
-  spotItIsTable(-40);
-  state.activeElement.style.left = state.coordinatesActiveElement.left + "px";
-}
 
-function spotItIsTable(reRun) {
-  if(state.coordinatesActiveElement.left > 360 || state.coordinatesActiveElement.left < 0){
-    state.coordinatesActiveElement.left += reRun;
-  };
-};
-
-function nextElement(){
-  state.numberOfStyleFigure = 0;
-  state.idActiveFigure++;
-  state.coordinatesActiveElement = {top: -40, left: 120};
-  deleteString();
-};
-
-function fillingTheArray(){
-  let n = 0
-  while(n < 4){
-    state.coordinatesAllFallElements.push(state.childOfActiveFigure[n]);
-    n++;
-  };
-};
-
-function checkingTheDropOfElement(){
-  state.idActiveElement = 0;
-  while(state.idActiveElement < state.childOfActiveFigure.length){
-    if(checkingFallTheElement()){
-      return true;
-    }; 
-    state.idActiveElement++; 
-  };
-  return false;
-};
-
-function checkingFallTheElement(){
-  if(state.childOfActiveFigure[state.idActiveElement].getBoundingClientRect().y >= 560){
-    state.coordinatesActiveElement.top -= 40;
-    fillingTheArray()
-    nextElement();
-    return true;
-  } else {
-    return false;
-  };
-};
-
-
-
-function checkingTheDrop(){
-  state.idActiveElement = 0;
-  while(state.idActiveElement < state.childOfActiveFigure.length){
-    var numberOfSearchItem = 0;
-    while(numberOfSearchItem < state.coordinatesAllFallElements.length){
-      if((state.childOfActiveFigure[state.idActiveElement].getBoundingClientRect().y == state.coordinatesAllFallElements[numberOfSearchItem].getBoundingClientRect().y &&
-        state.childOfActiveFigure[state.idActiveElement].getBoundingClientRect().x == state.coordinatesAllFallElements[numberOfSearchItem].getBoundingClientRect().x)){
-        state.coordinatesActiveElement.top -= 40;
-        state.activeElement.style.top = state.coordinatesActiveElement.top + "px";
-        fillingTheArray()
-        nextElement();
-        return true;
-      };
-      numberOfSearchItem++;
-    }
-  state.idActiveElement++;
-  };
-  return false;
-};
-
-
-function deleteString(){
-  var numberOfFindString = 0;
-  while(numberOfFindString < 15){
-    newArray = state.coordinatesAllFallElements.filter(item => Math.round(item.getBoundingClientRect().y) == numberOfFindString * 40);
-    if(newArray.length >= 10){
-      newArray.forEach((item) => {item.classList = "deleteThis"});
-      let h = 0;
-      state.coordinatesAllFallElements.forEach((item) => {
-        if(item.getBoundingClientRect().y < numberOfFindString * 40){
-          item.style.top = 40 + "px";
+function fall() {
+  let numberString = 0;
+  while(numberString < tableSquareVertSize){
+    newArray = state.coordinatesAllFallElements.filter(item => item.top == numberString);
+    if(newArray.length >= 14){
+      console.log(numberString, " удалить эту строку");
+      let numberElement = 0;
+      while(numberElement < state.coordinatesAllFallElements.length){
+        if(state.coordinatesAllFallElements[numberElement].top == numberString){
+          state.coordinatesAllFallElements.splice(numberElement, 1);
+          numberElement--;
         };
-      });
+        numberElement++;
+      };
+      let deleteOne = 0;
+      while(deleteOne < tableSquareHorizonSize){
+        arrayTable[numberString][deleteOne].innerHTML = "0";
+        deleteOne++;
+      };
+      let moveString = 0;
+      while(moveString < state.coordinatesAllFallElements.length){
+        if(state.coordinatesAllFallElements[moveString].top <= numberString){
+          arrayTable[state.coordinatesAllFallElements[moveString].top][state.coordinatesAllFallElements[moveString].left].innerHTML = "0";
+          state.coordinatesAllFallElements[moveString].top++;
+          arrayTable[state.coordinatesAllFallElements[moveString].top][state.coordinatesAllFallElements[moveString].left].innerHTML = "1";
+        };
+        moveString++;
+      };
     };
-    numberOfFindString++;
+    numberString++;
   };
-  deleteUsefullItem()
 };
 
 
-function deleteUsefullItem() {
-  let q = 0;
-  while(q < state.coordinatesAllFallElements.length){
-    if(state.coordinatesAllFallElements[q].classList == "deleteThis"){
-      state.coordinatesAllFallElements.splice(q, 1);
-      q--;
-    };
-    q++;
+function moveLeft() {
+  arrayTable[state.PositionActiveElementOne.top][state.PositionActiveElementOne.left].innerHTML = "0";
+  arrayTable[state.PositionActiveElementTwo.top][state.PositionActiveElementTwo.left].innerHTML = "0";
+  state.PositionActiveElementOne.left--;
+  state.PositionActiveElementTwo.left--;
+  if(state.PositionActiveElementOne.left == -1 || arrayTable[state.PositionActiveElementOne.top][state.PositionActiveElementOne.left].innerHTML == "1"){
+    state.PositionActiveElementOne.left++;
+    state.PositionActiveElementTwo.left++;
   };
-  state.coordinatesAllFallElements = state.coordinatesAllFallElements;
+  arrayTable[state.PositionActiveElementOne.top][state.PositionActiveElementOne.left].innerHTML = "1";
+  arrayTable[state.PositionActiveElementTwo.top][state.PositionActiveElementTwo.left].innerHTML = "1";
+};
+
+function moveRight() {
+  arrayTable[state.PositionActiveElementOne.top][state.PositionActiveElementOne.left].innerHTML = "0";
+  arrayTable[state.PositionActiveElementTwo.top][state.PositionActiveElementTwo.left].innerHTML = "0";
+  state.PositionActiveElementOne.left++;
+  state.PositionActiveElementTwo.left++;
+  if(state.PositionActiveElementTwo.left == 14 || arrayTable[state.PositionActiveElementTwo.top][state.PositionActiveElementTwo.left].innerHTML == "1"){
+    state.PositionActiveElementOne.left--;
+    state.PositionActiveElementTwo.left--;
+  };
+  arrayTable[state.PositionActiveElementOne.top][state.PositionActiveElementOne.left].innerHTML = "1";
+  arrayTable[state.PositionActiveElementTwo.top][state.PositionActiveElementTwo.left].innerHTML = "1";
 };
 
 
 function moveTurn(){
-  if(state.numberOfStyleFigure >= state.styleAllFigure[state.idActiveFigure].length){
-    state.numberOfStyleFigure = 0;
-  };
-  state.activeElement.classList = state.styleAllFigure[state.idActiveFigure][state.numberOfStyleFigure];
-  state.numberOfStyleFigure++;
+  arrayTable[state.PositionActiveElementTwo.top][state.PositionActiveElementTwo.left].innerHTML = "0";
+  state.PositionActiveElementTwo.left--;
+  state.PositionActiveElementTwo.top++;
+  arrayTable[state.PositionActiveElementTwo.top][state.PositionActiveElementTwo.left].innerHTML = "0";
 }
 
 
-document.addEventListener('keydown', function(event){
-    if (event.code == "ArrowLeft") {
-        moveLeft();
-    }
-});
-document.addEventListener('keydown', function(event){
-    if (event.code == "ArrowUp") {
-        moveTurn();
-    }
-});
-document.addEventListener('keydown', function(event){
-    if (event.code == "ArrowRight") {
-        moveRight();
-    }
-});
 
 
 
@@ -164,16 +138,4 @@ document.addEventListener('keydown', function(event){
 
 
 
-// while(h < state.coordinatesAllFallElements.length){
-      //   if(state.coordinatesAllFallElements[h].getBoundingClientRect().y < numberOfFindString * 40){
-      //     state.coordinatesAllFallElements[h].style.top = 40 + "px";
-      //   };
-      //   h++;
-      // };
 
-
-// state.coordinatesAllFallElements.forEach((item) => {
-//         if(item.getBoundingClientRect().y < numberOfFindString * 40){
-//           item.style.top = 40 + "px";
-//         };
-//       });

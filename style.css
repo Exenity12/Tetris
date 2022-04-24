@@ -1,83 +1,36 @@
-.background{
-    position: absolute;
-    top: 0px;
-    left: 0px;
-}
-
-.table {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    height: 600px;
-    width: 400px;
-}
 
 .string {
     display: flex;
     flex-direction: row;
 }
 
-.item {
-    height: 40px;
-    width: 40px;
-    outline: 1px solid black;
-}
-
-.itemActive {
-    height: 40px;
-    width: 40px;
-    outline: 1px solid black;
-}
-
-.deleteThis {
-    height: 40px;
-    width: 40px;
-    outline: 1px solid black;
-}
-
-
-.activeElementAll {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    display: flex;
-    flex-direction: row;
-}
-
-.itemElementOfFigure{
-    position: absolute;
-    height: 40px;
-    width: 40px;
-    background-color: red;
-    outline: 1px solid black;
-}
 
 .button {
     position: absolute;
-    top: 450px;
-    left: 600px;
+    top: 250px;
+    left: 300px;
 }
 
 .button-left {
     position: absolute;
-    top: 530px;
-    left: 550px;
+    top: 330px;
+    left: 250px;
 }
 
 .button-right {
     position: absolute;
-    top: 530px;
-    left: 650px;
+    top: 330px;
+    left: 350px;
 }
 
 .button-clear {
     position: absolute;
-    top: 570px;
-    left: 600px;
+    top: 370px;
+    left: 300px;
 }
 
 .button-turn {
     position: absolute;
-    top: 530px;
-    left: 600px;
+    top: 330px;
+    left: 300px;
 }
