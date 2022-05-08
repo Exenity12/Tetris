@@ -1,5 +1,6 @@
 var arrayString = [];
 var arrayTable = [];
+informationOfNewElement();
 
 function startGame() {
   console.log("Start!");
@@ -18,50 +19,50 @@ function startGame() {
 };
 
 function moveActiveFigure() {
-  arrayTable[state.PositionActiveElementOne.top][state.PositionActiveElementOne.left].innerHTML = "0";
-  arrayTable[state.PositionActiveElementTwo.top][state.PositionActiveElementTwo.left].innerHTML = "0";
-  state.PositionActiveElementOne.top++;
-  state.PositionActiveElementTwo.top++;
+  state.positionActiveElement.forEach((item) => {
+    arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+    item.top++;
+  });
   if(checkDropOnAnotherElement()){
     return;
   };
-  arrayTable[state.PositionActiveElementOne.top][state.PositionActiveElementOne.left].innerHTML = "1";
-  arrayTable[state.PositionActiveElementTwo.top][state.PositionActiveElementTwo.left].innerHTML = "1";
+  state.positionActiveElement.forEach((item) => {
+    arrayTable[item.top][item.left].innerHTML = activeElement;
+  });
   nextElement();
 };
 
 
 function checkDropOnAnotherElement(){
-  if(arrayTable[state.PositionActiveElementOne.top][state.PositionActiveElementOne.left].innerHTML == "1" || arrayTable[state.PositionActiveElementTwo.top][state.PositionActiveElementTwo.left].innerHTML == "1"){
-    state.PositionActiveElementOne.top--;
-    state.PositionActiveElementTwo.top--;
-    arrayTable[state.PositionActiveElementOne.top][state.PositionActiveElementOne.left].innerHTML = "1";
-    arrayTable[state.PositionActiveElementTwo.top][state.PositionActiveElementTwo.left].innerHTML = "1";
-    state.coordinatesAllFallElements.push(state.PositionActiveElementOne);
-    state.coordinatesAllFallElements.push(state.PositionActiveElementTwo);
-    state.PositionActiveElementOne = {top: 0, left: 7};
-    state.PositionActiveElementTwo = {top: 0, left: 8};
+  if(state.positionActiveElement.find((item) => arrayTable[item.top][item.left].innerHTML == '<div class="activeElement"></div>')){
+    state.positionActiveElement.forEach((item) => {
+      item.top--;
+      arrayTable[item.top][item.left].innerHTML = activeElement;
+      state.coordinatesAllFallElements.push(item);
+      informationOfNewElement();
+    });
+    fall();
     return;
   };
 };
 
 
- 
+
 
 function nextElement() {
-  if(state.PositionActiveElementOne.top == 14 || state.PositionActiveElementTwo.top == 14){
-    state.coordinatesAllFallElements.push(state.PositionActiveElementOne);
-    state.coordinatesAllFallElements.push(state.PositionActiveElementTwo);
-    state.PositionActiveElementOne = {top: 0, left: 7};
-    state.PositionActiveElementTwo = {top: 0, left: 8};
+  if(state.positionActiveElement.find((item) => item.top == 14)){
+    state.positionActiveElement.forEach((item) => {
+      state.coordinatesAllFallElements.push(item);
+      informationOfNewElement();
+    });
     fall();
   };
 }
 
 
 function fall() {
-  let numberString = 0;
-  while(numberString < tableSquareVertSize){
+  let numberString = tableSquareVertSize;
+  while(numberString > 0){
     newArray = state.coordinatesAllFallElements.filter(item => item.top == numberString);
     if(newArray.length >= 14){
       console.log(numberString, " удалить эту строку");
@@ -75,67 +76,615 @@ function fall() {
       };
       let deleteOne = 0;
       while(deleteOne < tableSquareHorizonSize){
-        arrayTable[numberString][deleteOne].innerHTML = "0";
+        arrayTable[numberString][deleteOne].innerHTML = noneActiveElement;
         deleteOne++;
       };
       let moveString = 0;
+      state.coordinatesAllFallElements.sort((prev, next) => next.top - prev.top);
       while(moveString < state.coordinatesAllFallElements.length){
-        if(state.coordinatesAllFallElements[moveString].top <= numberString){
-          arrayTable[state.coordinatesAllFallElements[moveString].top][state.coordinatesAllFallElements[moveString].left].innerHTML = "0";
+        if(state.coordinatesAllFallElements[moveString].top < numberString){
+          arrayTable[state.coordinatesAllFallElements[moveString].top][state.coordinatesAllFallElements[moveString].left].innerHTML = noneActiveElement;
           state.coordinatesAllFallElements[moveString].top++;
-          arrayTable[state.coordinatesAllFallElements[moveString].top][state.coordinatesAllFallElements[moveString].left].innerHTML = "1";
+          arrayTable[state.coordinatesAllFallElements[moveString].top][state.coordinatesAllFallElements[moveString].left].innerHTML = activeElement;
         };
         moveString++;
       };
     };
-    numberString++;
+    numberString--;
   };
 };
 
 
 function moveLeft() {
-  arrayTable[state.PositionActiveElementOne.top][state.PositionActiveElementOne.left].innerHTML = "0";
-  arrayTable[state.PositionActiveElementTwo.top][state.PositionActiveElementTwo.left].innerHTML = "0";
-  state.PositionActiveElementOne.left--;
-  state.PositionActiveElementTwo.left--;
-  if(state.PositionActiveElementOne.left == -1 || arrayTable[state.PositionActiveElementOne.top][state.PositionActiveElementOne.left].innerHTML == "1"){
-    state.PositionActiveElementOne.left++;
-    state.PositionActiveElementTwo.left++;
+  state.positionActiveElement.forEach((item) => {
+    arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+    item.left--;
+  });
+  if(state.positionActiveElement.find((item) => item.left == -1 || arrayTable[item.top][item.left].innerHTML == '<div class="activeElement"></div>')){
+    state.positionActiveElement.forEach((item) => {
+      item.left++;
+    });
   };
-  arrayTable[state.PositionActiveElementOne.top][state.PositionActiveElementOne.left].innerHTML = "1";
-  arrayTable[state.PositionActiveElementTwo.top][state.PositionActiveElementTwo.left].innerHTML = "1";
+  state.positionActiveElement.forEach((item) => {
+    arrayTable[item.top][item.left].innerHTML = activeElement;
+  });
 };
 
+
 function moveRight() {
-  arrayTable[state.PositionActiveElementOne.top][state.PositionActiveElementOne.left].innerHTML = "0";
-  arrayTable[state.PositionActiveElementTwo.top][state.PositionActiveElementTwo.left].innerHTML = "0";
-  state.PositionActiveElementOne.left++;
-  state.PositionActiveElementTwo.left++;
-  if(state.PositionActiveElementTwo.left == 14 || arrayTable[state.PositionActiveElementTwo.top][state.PositionActiveElementTwo.left].innerHTML == "1"){
-    state.PositionActiveElementOne.left--;
-    state.PositionActiveElementTwo.left--;
+  state.positionActiveElement.forEach((item) => {
+    arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+    item.left++;
+  });
+  if(state.positionActiveElement.find((item) => item.left == 14 || arrayTable[item.top][item.left].innerHTML == '<div class="activeElement"></div>')){
+    state.positionActiveElement.forEach((item) => {
+      item.left--;
+    });
   };
-  arrayTable[state.PositionActiveElementOne.top][state.PositionActiveElementOne.left].innerHTML = "1";
-  arrayTable[state.PositionActiveElementTwo.top][state.PositionActiveElementTwo.left].innerHTML = "1";
+  state.positionActiveElement.forEach((item) => {
+    arrayTable[item.top][item.left].innerHTML = activeElement;
+  });
 };
 
 
 function moveTurn(){
-  arrayTable[state.PositionActiveElementTwo.top][state.PositionActiveElementTwo.left].innerHTML = "0";
-  state.PositionActiveElementTwo.left--;
-  state.PositionActiveElementTwo.top++;
-  arrayTable[state.PositionActiveElementTwo.top][state.PositionActiveElementTwo.left].innerHTML = "0";
+  state.directionActiveFigure++;
+  if(state.directionActiveFigure >= 4){
+    state.directionActiveFigure = 0;
+  };
+
+
+  if(state.shapeActiveFigure == "snake"){
+    if(state.directionActiveFigure == 0){
+      console.log("snake0");
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+      });
+
+      state.positionActiveElement[0].top--;
+      state.positionActiveElement[0].left--;
+      state.positionActiveElement[2].top++;
+      state.positionActiveElement[2].left++;
+      state.positionActiveElement[3].top += 2;
+      state.positionActiveElement[3].left += 2;
+
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = activeElement;
+      });
+    } else if(state.directionActiveFigure == 1){
+      console.log("snake1");
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+      });
+
+      state.positionActiveElement[0].top--;
+      state.positionActiveElement[0].left++;
+      state.positionActiveElement[2].top++;
+      state.positionActiveElement[2].left--;
+      state.positionActiveElement[3].top +=2;
+      state.positionActiveElement[3].left -=2;
+
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = activeElement;
+      });
+    } else if(state.directionActiveFigure == 2){
+      console.log("snake2");
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+      });
+
+      state.positionActiveElement[0].top++;
+      state.positionActiveElement[0].left++;
+      state.positionActiveElement[2].top--;
+      state.positionActiveElement[2].left--;
+      state.positionActiveElement[3].top -= 2;
+      state.positionActiveElement[3].left -= 2;
+
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = activeElement;
+      });
+    } else if(state.directionActiveFigure == 3){
+      console.log("snake3");
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+      });
+
+      state.positionActiveElement[0].top++;
+      state.positionActiveElement[0].left--;
+      state.positionActiveElement[2].top--;
+      state.positionActiveElement[2].left++;
+      state.positionActiveElement[3].top -= 2;
+      state.positionActiveElement[3].left +=2;
+
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = activeElement;
+      });
+    };
+
+
+
+  } else if(state.shapeActiveFigure == "pyramid"){
+    if(state.directionActiveFigure == 0){
+      console.log("pyramid0");
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+      });
+
+      state.positionActiveElement[0].top--;
+      state.positionActiveElement[0].left--;
+      state.positionActiveElement[2].top++;
+      state.positionActiveElement[2].left++;
+      state.positionActiveElement[3].top++;
+      state.positionActiveElement[3].left--;
+
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = activeElement;
+      });
+    } else if(state.directionActiveFigure == 1){
+      console.log("pyramid1");
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+      });
+
+      state.positionActiveElement[0].top--;
+      state.positionActiveElement[0].left++;
+      state.positionActiveElement[2].top++;
+      state.positionActiveElement[2].left--;
+      state.positionActiveElement[3].top--;
+      state.positionActiveElement[3].left--;
+
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = activeElement;
+      });
+    } else if(state.directionActiveFigure == 2){
+      console.log("pyramid2");
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+      });
+
+      state.positionActiveElement[0].top++;
+      state.positionActiveElement[0].left++;
+      state.positionActiveElement[2].top--;
+      state.positionActiveElement[2].left--;
+      state.positionActiveElement[3].top--;
+      state.positionActiveElement[3].left++;
+
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = activeElement;
+      });
+    } else if(state.directionActiveFigure == 3){
+      console.log("pyramid3");
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+      });
+
+      state.positionActiveElement[0].top++;
+      state.positionActiveElement[0].left--;
+      state.positionActiveElement[2].top--;
+      state.positionActiveElement[2].left++;
+      state.positionActiveElement[3].top++;
+      state.positionActiveElement[3].left++;
+
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = activeElement;
+      });
+    };
+
+
+
+  } else if(state.shapeActiveFigure == "lightning"){
+    if(state.directionActiveFigure == 0){
+      console.log("lightning0");
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+      });
+
+      state.positionActiveElement[0].top--;
+      state.positionActiveElement[0].left--;
+      state.positionActiveElement[2].top++;
+      state.positionActiveElement[2].left--;
+      state.positionActiveElement[3].top += 2;
+
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = activeElement;
+      });
+    } else if(state.directionActiveFigure == 1){
+      console.log("lightning1");
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+      });
+
+      state.positionActiveElement[0].top--;
+      state.positionActiveElement[0].left++;
+      state.positionActiveElement[2].top--;
+      state.positionActiveElement[2].left--;
+      state.positionActiveElement[3].left -= 2;
+
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = activeElement;
+      });
+    } else if(state.directionActiveFigure == 2){
+      console.log("lightning2");
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+      });
+
+      state.positionActiveElement[0].top++;
+      state.positionActiveElement[0].left++;
+      state.positionActiveElement[2].top--;
+      state.positionActiveElement[2].left++;
+      state.positionActiveElement[3].top -= 2;
+
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = activeElement;
+      });
+    } else if(state.directionActiveFigure == 3){
+      console.log("lightning3");
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+      });
+
+      state.positionActiveElement[0].top++;
+      state.positionActiveElement[0].left--;
+      state.positionActiveElement[2].top++;
+      state.positionActiveElement[2].left++;
+      state.positionActiveElement[3].left += 2;
+
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = activeElement;
+      });
+    };
+
+
+
+  } else if(state.shapeActiveFigure == "reverseLightning"){
+    if(state.directionActiveFigure == 0){
+      console.log("reverseLightning0");
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+      });
+
+      state.positionActiveElement[0].top++;
+      state.positionActiveElement[0].left++;
+      state.positionActiveElement[2].top++;
+      state.positionActiveElement[2].left--;
+      state.positionActiveElement[3].left -= 2;
+
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = activeElement;
+      });
+    } else if(state.directionActiveFigure == 1){
+      console.log("reverseLightning1");
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+      });
+
+      state.positionActiveElement[0].top++;
+      state.positionActiveElement[0].left--;
+      state.positionActiveElement[2].top--;
+      state.positionActiveElement[2].left--;
+      state.positionActiveElement[3].top -= 2;
+
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = activeElement;
+      });
+    } else if(state.directionActiveFigure == 2){
+      console.log("reverseLightning2");
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+      });
+
+      state.positionActiveElement[0].top--;
+      state.positionActiveElement[0].left--;
+      state.positionActiveElement[2].top--;
+      state.positionActiveElement[2].left++;
+      state.positionActiveElement[3].left += 2;
+
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = activeElement;
+      });
+    } else if(state.directionActiveFigure == 3){
+      console.log("reverseLightning3");
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+      });
+
+      state.positionActiveElement[0].top--;
+      state.positionActiveElement[0].left++;
+      state.positionActiveElement[2].top++;
+      state.positionActiveElement[2].left++;
+      state.positionActiveElement[3].top += 2;
+
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = activeElement;
+      });
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  } else if(state.shapeActiveFigure == "horse"){
+    if(state.directionActiveFigure == 0){
+      console.log("horse0");
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+      });
+
+      state.positionActiveElement[0].top--;
+      state.positionActiveElement[0].left--;
+      state.positionActiveElement[2].top++;
+      state.positionActiveElement[2].left++;
+      state.positionActiveElement[3].top += 2;
+
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = activeElement;
+      });
+    } else if(state.directionActiveFigure == 1){
+      console.log("horse1");
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+      });
+
+      state.positionActiveElement[0].top--;
+      state.positionActiveElement[0].left++;
+      state.positionActiveElement[2].top++;
+      state.positionActiveElement[2].left--;
+      state.positionActiveElement[3].left -= 2;
+
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = activeElement;
+      });
+    } else if(state.directionActiveFigure == 2){
+      console.log("horse2");
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+      });
+
+      state.positionActiveElement[0].top++;
+      state.positionActiveElement[0].left++;
+      state.positionActiveElement[2].top--;
+      state.positionActiveElement[2].left--;
+      state.positionActiveElement[3].top -= 2;
+
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = activeElement;
+      });
+    } else if(state.directionActiveFigure == 3){
+      console.log("horse3");
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+      });
+
+      state.positionActiveElement[0].top++;
+      state.positionActiveElement[0].left--;
+      state.positionActiveElement[2].top--;
+      state.positionActiveElement[2].left++;
+      state.positionActiveElement[3].left += 2;
+
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = activeElement;
+      });
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  } else if(state.shapeActiveFigure == "reverseHorse"){
+    if(state.directionActiveFigure == 0){
+      console.log("reverseHorse0");
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+      });
+
+      state.positionActiveElement[0].top++;
+      state.positionActiveElement[0].left++;
+      state.positionActiveElement[2].top--;
+      state.positionActiveElement[2].left--;
+      state.positionActiveElement[3].left -= 2;
+
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = activeElement;
+      });
+    } else if(state.directionActiveFigure == 1){
+      console.log("reverseHorse1");
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+      });
+
+      state.positionActiveElement[0].top++; 
+      state.positionActiveElement[0].left--;
+      state.positionActiveElement[2].top--;
+      state.positionActiveElement[2].left++;
+      state.positionActiveElement[3].top -= 2;
+
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = activeElement;
+      });
+    } else if(state.directionActiveFigure == 2){
+      console.log("reverseHorse2");
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+      });
+
+      state.positionActiveElement[0].top--;
+      state.positionActiveElement[0].left--;
+      state.positionActiveElement[2].top++;
+      state.positionActiveElement[2].left++;
+      state.positionActiveElement[3].left += 2;
+
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = activeElement;
+      });
+    } else if(state.directionActiveFigure == 3){
+      console.log("reverseHorse3");
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = noneActiveElement;
+      });
+
+      state.positionActiveElement[0].top--;
+      state.positionActiveElement[0].left++;
+      state.positionActiveElement[2].top++;
+      state.positionActiveElement[2].left--;
+      state.positionActiveElement[3].top += 2;
+
+      state.positionActiveElement.forEach((item) => {
+        arrayTable[item.top][item.left].innerHTML = activeElement;
+      });
+    };
+  };
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function informationOfNewElement(){
+  let activeFigure = getRandomIntInclusive(0, 6);
+  if(activeFigure == 0){
+    state.positionActiveElement = [{top: 0, left: 7}, {top: 0, left: 8}, {top: 0, left: 9}, {top: 0, left: 10}];
+    state.directionActiveFigure = 0;
+    state.shapeActiveFigure =  "snake";
+
+  } else if(activeFigure == 1){
+    state.positionActiveElement = [{top: 0, left: 7}, {top: 0, left: 8}, {top: 1, left: 7}, {top: 1, left: 8}];
+    state.directionActiveFigure = 0;
+    state.shapeActiveFigure =  "square";
+
+  } else if(activeFigure == 2){
+    state.positionActiveElement = [{top: 0, left: 7}, {top: 0, left: 8}, {top: 0, left: 9}, {top: 1, left: 8}];
+    state.directionActiveFigure = 0;
+    state.shapeActiveFigure =  "pyramid";
+
+  } else if(activeFigure == 3){
+    state.positionActiveElement = [{top: 0, left: 7}, {top: 0, left: 8}, {top: 1, left: 8}, {top: 1, left: 9}];
+    state.directionActiveFigure = 0;
+    state.shapeActiveFigure =  "lightning";
+
+  } else if(activeFigure == 4){
+    state.positionActiveElement = [{top: 0, left: 8}, {top: 0, left: 7}, {top: 1, left: 7}, {top: 1, left: 6}];
+    state.directionActiveFigure = 0;
+    state.shapeActiveFigure =  "reverseLightning";
+
+  } else if(activeFigure == 5){
+    state.positionActiveElement = [{top: 0, left: 7}, {top: 0, left: 8}, {top: 0, left: 9}, {top: 1, left: 9}];
+    state.directionActiveFigure = 0;
+    state.shapeActiveFigure =  "horse";
+
+  } else if(activeFigure == 6){
+    state.positionActiveElement = [{top: 0, left: 9}, {top: 0, left: 8}, {top: 0, left: 7}, {top: 1, left: 7}];
+    state.directionActiveFigure = 0;
+    state.shapeActiveFigure =  "reverseHorse";
+  };
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

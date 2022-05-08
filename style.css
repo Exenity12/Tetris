@@ -4,6 +4,17 @@
     flex-direction: row;
 }
 
+.noneActiveElement {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+}
+
+.activeElement {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+}
 
 .button {
     position: absolute;

@@ -15,6 +15,8 @@ var tableSquareHorizonSize = 14;
 var variableCreateStringInTable = 0;
 var variableAlternateString = 0;
 
+var noneActiveElement = '<div class="noneActiveElement"></div>'
+var activeElement = '<div class="activeElement"></div>'
 
 while(variableCreateStringInTable < tableSquareVertSize){
     theWholeTable.innerHTML += `<div class="string"></div>`;
@@ -26,7 +28,7 @@ const tableString = document.querySelectorAll('.string');
 while(variableAlternateString < tableSquareVertSize) {
     let variableCreateItemInString = 0;
     while(variableCreateItemInString < tableSquareHorizonSize){
-        tableString[variableAlternateString].innerHTML += `<div class="item" id="id_${variableCreateItemInString}_${variableAlternateString}">0</div>`
+        tableString[variableAlternateString].innerHTML += `<div class="item" id="id_${variableCreateItemInString}_${variableAlternateString}">${noneActiveElement}</div>`
         variableCreateItemInString++;
     };
     variableAlternateString++;
@@ -35,7 +37,10 @@ const item = document.querySelectorAll('.item');
 
 
 var state = {
-    PositionActiveElementOne: {top: 0, left: 7},
-    PositionActiveElementTwo: {top: 0, left: 8},
+    positionActiveElement: "",
     coordinatesAllFallElements: [],
+    directionActiveFigure: 0,
+    shapeActiveFigure: "snake",
 };
+
+
