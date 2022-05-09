@@ -158,6 +158,13 @@ function moveTurn(){
       })
 
       state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+          return
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         if(item.left <= -1){
           state.positionActiveElement.forEach((item) => item.left++)
         }
@@ -169,16 +176,18 @@ function moveTurn(){
       })
 
       state.positionActiveElement.forEach((item) => {
-        if(item == state.coordinatesAllFallElements){
-          state.positionActiveElement.forEach((item) => {
+        state.coordinatesAllFallElements.forEach((i) => {
+          if(i.top == item.top && i.left == item.left){
+            console.log("greate");
             state.positionActiveElement[0].top++;
             state.positionActiveElement[0].left++;
             state.positionActiveElement[2].top--;
             state.positionActiveElement[2].left--;
             state.positionActiveElement[3].top -= 2;
             state.positionActiveElement[3].left -= 2;
-          })
-        }
+            state.directionActiveFigure--;
+          }
+        })
       })
 
       state.positionActiveElement.forEach((item) => {
@@ -197,22 +206,31 @@ function moveTurn(){
       state.positionActiveElement[3].left -=2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.top >= 14){
+          state.positionActiveElement.forEach((item) => item.top-=1)
+          return
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         if(item.top <= 0){
           state.positionActiveElement.forEach((item) => item.top++)
         }
       })
 
       state.positionActiveElement.forEach((item) => {
-        if(item == state.coordinatesAllFallElements){
-          state.positionActiveElement.forEach((item) => {
+        state.coordinatesAllFallElements.forEach((i) => {
+          if(i.top == item.top && i.left == item.left){
+            console.log("greate");
             state.positionActiveElement[0].top++;
             state.positionActiveElement[0].left--;
-            state.positionActiveElement[2].top++;
-            state.positionActiveElement[2].left--;
+            state.positionActiveElement[2].top--;
+            state.positionActiveElement[2].left++;
             state.positionActiveElement[3].top -= 2;
             state.positionActiveElement[3].left += 2;
-          })
-        }
+            state.directionActiveFigure--;
+          }
+        })
       })
 
       state.positionActiveElement.forEach((item) => {
@@ -229,6 +247,14 @@ function moveTurn(){
       state.positionActiveElement[2].left--;
       state.positionActiveElement[3].top -= 2;
       state.positionActiveElement[3].left -= 2;
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+          return
+        }
+      })
+
 
       state.positionActiveElement.forEach((item) => {
         if(item.top <= 0){
@@ -248,16 +274,18 @@ function moveTurn(){
       })
 
       state.positionActiveElement.forEach((item) => {
-        if(item == state.coordinatesAllFallElements){
-          state.positionActiveElement.forEach((item) => {
+        state.coordinatesAllFallElements.forEach((i) => {
+          if(i.top == item.top && i.left == item.left){
+            console.log("greate");
             state.positionActiveElement[0].top--;
             state.positionActiveElement[0].left--;
             state.positionActiveElement[2].top++;
             state.positionActiveElement[2].left++;
             state.positionActiveElement[3].top += 2;
             state.positionActiveElement[3].left += 2;
-          })
-        }
+            state.directionActiveFigure--;
+          }
+        })
       })
 
       state.positionActiveElement.forEach((item) => {
@@ -276,22 +304,32 @@ function moveTurn(){
       state.positionActiveElement[3].left +=2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+          return
+        }
+      })
+
+
+      state.positionActiveElement.forEach((item) => {
         if(item.top <= 0){
           state.positionActiveElement.forEach((item) => item.top++)
         }
       })
 
       state.positionActiveElement.forEach((item) => {
-        if(item == state.coordinatesAllFallElements){
-          state.positionActiveElement.forEach((item) => {
+        state.coordinatesAllFallElements.forEach((i) => {
+          if(i.top == item.top && i.left == item.left){
+            console.log("greate");
             state.positionActiveElement[0].top--;
             state.positionActiveElement[0].left++;
-            state.positionActiveElement[2].top--;
-            state.positionActiveElement[2].left++;
+            state.positionActiveElement[2].top++;
+            state.positionActiveElement[2].left--;
             state.positionActiveElement[3].top += 2;
             state.positionActiveElement[3].left -= 2;
-          })
-        }
+            state.directionActiveFigure--;
+          }
+        })
       })
 
       state.positionActiveElement.forEach((item) => {
@@ -315,6 +353,35 @@ function moveTurn(){
       state.positionActiveElement[3].left--;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+          return
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        state.coordinatesAllFallElements.forEach((i) => {
+          if(i.top == item.top && i.left == item.left){
+            console.log("greate");
+            state.positionActiveElement[0].top++;
+            state.positionActiveElement[0].left++;
+            state.positionActiveElement[2].top--;
+            state.positionActiveElement[2].left--;
+            state.positionActiveElement[3].top--;
+            state.positionActiveElement[3].left++;
+            state.directionActiveFigure--;
+          }
+        })
+      })
+
+
+      state.positionActiveElement.forEach((item) => {
         if(item.top <= 0){
           state.positionActiveElement.forEach((item) => item.top++)
         }
@@ -345,6 +412,35 @@ function moveTurn(){
       state.positionActiveElement[2].left--;
       state.positionActiveElement[3].top--;
       state.positionActiveElement[3].left--;
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+          return
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        state.coordinatesAllFallElements.forEach((i) => {
+          if(i.top == item.top && i.left == item.left){
+            console.log("greate");
+            state.positionActiveElement[0].top++;
+            state.positionActiveElement[0].left--;
+            state.positionActiveElement[2].top--;
+            state.positionActiveElement[2].left++;
+            state.positionActiveElement[3].top++;
+            state.positionActiveElement[3].left++;
+            state.directionActiveFigure--;
+          }
+        })
+      })
+
 
       state.positionActiveElement.forEach((item) => {
         if(item.top <= 0){
@@ -379,6 +475,35 @@ function moveTurn(){
       state.positionActiveElement[3].left++;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+          return
+        }
+      })
+
+
+      state.positionActiveElement.forEach((item) => {
+        state.coordinatesAllFallElements.forEach((i) => {
+          if(i.top == item.top && i.left == item.left){
+            console.log("greate");
+            state.positionActiveElement[0].top--;
+            state.positionActiveElement[0].left--;
+            state.positionActiveElement[2].top++;
+            state.positionActiveElement[2].left++;
+            state.positionActiveElement[3].top++;
+            state.positionActiveElement[3].left--;
+            state.directionActiveFigure--;
+          }
+        })
+      })
+
+      state.positionActiveElement.forEach((item) => {
         if(item.top <= 0){
           state.positionActiveElement.forEach((item) => item.top++)
         }
@@ -409,6 +534,35 @@ function moveTurn(){
       state.positionActiveElement[2].left++;
       state.positionActiveElement[3].top++;
       state.positionActiveElement[3].left++;
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+          return
+        }
+      })
+
+
+      state.positionActiveElement.forEach((item) => {
+        state.coordinatesAllFallElements.forEach((i) => {
+          if(i.top == item.top && i.left == item.left){
+            console.log("greate");
+            state.positionActiveElement[0].top--;
+            state.positionActiveElement[0].left++;
+            state.positionActiveElement[2].top++;
+            state.positionActiveElement[2].left--;
+            state.positionActiveElement[3].top--;
+            state.positionActiveElement[3].left--;
+            state.directionActiveFigure--;
+          }
+        })
+      })
 
       state.positionActiveElement.forEach((item) => {
         if(item.top <= 0){
@@ -447,6 +601,35 @@ function moveTurn(){
       state.positionActiveElement[3].top += 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+          return
+        }
+      })
+
+
+      state.positionActiveElement.forEach((item) => {
+        state.coordinatesAllFallElements.forEach((i) => {
+          if(i.top == item.top && i.left == item.left){
+            console.log("greate");
+            state.positionActiveElement[0].top++;
+            state.positionActiveElement[0].left++;
+            state.positionActiveElement[2].top--;
+            state.positionActiveElement[2].left++;
+            state.positionActiveElement[3].top -= 2;
+            state.directionActiveFigure--;
+          }
+        })
+      })
+
+
+      state.positionActiveElement.forEach((item) => {
         if(item.top <= 0){
           state.positionActiveElement.forEach((item) => item.top++)
         }
@@ -476,6 +659,36 @@ function moveTurn(){
       state.positionActiveElement[2].top--;
       state.positionActiveElement[2].left--;
       state.positionActiveElement[3].left -= 2;
+
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+          return
+        }
+      })
+
+
+      state.positionActiveElement.forEach((item) => {
+        state.coordinatesAllFallElements.forEach((i) => {
+          if(i.top == item.top && i.left == item.left){
+            console.log("greate");
+            state.positionActiveElement[0].top++;
+            state.positionActiveElement[0].left--;
+            state.positionActiveElement[2].top++;
+            state.positionActiveElement[2].left++;
+            state.positionActiveElement[3].left += 2;
+            state.directionActiveFigure--;
+          }
+        })
+      })
+
 
       state.positionActiveElement.forEach((item) => {
         if(item.top <= 0){
@@ -509,6 +722,34 @@ function moveTurn(){
       state.positionActiveElement[3].top -= 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+          return
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        state.coordinatesAllFallElements.forEach((i) => {
+          if(i.top == item.top && i.left == item.left){
+            console.log("greate");
+            state.positionActiveElement[0].top--;
+            state.positionActiveElement[0].left--;
+            state.positionActiveElement[2].top++;
+            state.positionActiveElement[2].left--;
+            state.positionActiveElement[3].top += 2;
+            state.directionActiveFigure--;
+          }
+        })
+      })
+
+
+      state.positionActiveElement.forEach((item) => {
         if(item.top <= 0){
           state.positionActiveElement.forEach((item) => item.top++)
         }
@@ -538,6 +779,34 @@ function moveTurn(){
       state.positionActiveElement[2].top++;
       state.positionActiveElement[2].left++;
       state.positionActiveElement[3].left += 2;
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+          return
+        }
+      })
+
+
+      state.positionActiveElement.forEach((item) => {
+        state.coordinatesAllFallElements.forEach((i) => {
+          if(i.top == item.top && i.left == item.left){
+            console.log("greate");
+            state.positionActiveElement[0].top--;
+            state.positionActiveElement[0].left++;
+            state.positionActiveElement[2].top--;
+            state.positionActiveElement[2].left--;
+            state.positionActiveElement[3].left -= 2;
+            state.directionActiveFigure--;
+          }
+        })
+      })
 
       state.positionActiveElement.forEach((item) => {
         if(item.top <= 0){
@@ -576,6 +845,34 @@ function moveTurn(){
       state.positionActiveElement[3].left -= 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+        }
+      })
+
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+          return
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        state.coordinatesAllFallElements.forEach((i) => {
+          if(i.top == item.top && i.left == item.left){
+            console.log("greate");
+            state.positionActiveElement[0].top--;
+            state.positionActiveElement[0].left--;
+            state.positionActiveElement[2].top--;
+            state.positionActiveElement[2].left++;
+            state.positionActiveElement[3].left += 2;
+            state.directionActiveFigure--;
+          }
+        })
+      })
+
+      state.positionActiveElement.forEach((item) => {
         if(item.top <= 0){
           state.positionActiveElement.forEach((item) => item.top++)
         }
@@ -605,6 +902,34 @@ function moveTurn(){
       state.positionActiveElement[2].top--;
       state.positionActiveElement[2].left--;
       state.positionActiveElement[3].top -= 2;
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+        }
+      })
+
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+          return
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        state.coordinatesAllFallElements.forEach((i) => {
+          if(i.top == item.top && i.left == item.left){
+            console.log("greate");
+            state.positionActiveElement[0].top--;
+            state.positionActiveElement[0].left++;
+            state.positionActiveElement[2].top++;
+            state.positionActiveElement[2].left++;
+            state.positionActiveElement[3].top += 2;
+            state.directionActiveFigure--;
+          }
+        })
+      })
 
       state.positionActiveElement.forEach((item) => {
         if(item.top <= 0){
@@ -638,6 +963,34 @@ function moveTurn(){
       state.positionActiveElement[3].left += 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+        }
+      })
+
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+          return
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        state.coordinatesAllFallElements.forEach((i) => {
+          if(i.top == item.top && i.left == item.left){
+            console.log("greate");
+            state.positionActiveElement[0].top++;
+            state.positionActiveElement[0].left++;
+            state.positionActiveElement[2].top++;
+            state.positionActiveElement[2].left--;
+            state.positionActiveElement[3].left -= 2;
+            state.directionActiveFigure--;
+          }
+        })
+      })
+
+      state.positionActiveElement.forEach((item) => {
         if(item.top <= 0){
           state.positionActiveElement.forEach((item) => item.top++)
         }
@@ -667,6 +1020,34 @@ function moveTurn(){
       state.positionActiveElement[2].top++;
       state.positionActiveElement[2].left++;
       state.positionActiveElement[3].top += 2;
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+        }
+      })
+
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+          return
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        state.coordinatesAllFallElements.forEach((i) => {
+          if(i.top == item.top && i.left == item.left){
+            console.log("greate");
+            state.positionActiveElement[0].top++;
+            state.positionActiveElement[0].left--;
+            state.positionActiveElement[2].top--;
+            state.positionActiveElement[2].left--;
+            state.positionActiveElement[3].top -= 2;
+            state.directionActiveFigure--;
+          }
+        })
+      })
 
       state.positionActiveElement.forEach((item) => {
         if(item.top <= 0){
@@ -704,6 +1085,34 @@ function moveTurn(){
       state.positionActiveElement[3].top += 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+        }
+      })
+
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+          return
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        state.coordinatesAllFallElements.forEach((i) => {
+          if(i.top == item.top && i.left == item.left){
+            console.log("greate");
+            state.positionActiveElement[0].top++;
+            state.positionActiveElement[0].left++;
+            state.positionActiveElement[2].top--;
+            state.positionActiveElement[2].left--;
+            state.positionActiveElement[3].top -= 2;
+            state.directionActiveFigure--;
+          }
+        })
+      })
+
+      state.positionActiveElement.forEach((item) => {
         if(item.top <= 0){
           state.positionActiveElement.forEach((item) => item.top++)
         }
@@ -733,6 +1142,33 @@ function moveTurn(){
       state.positionActiveElement[2].top++;
       state.positionActiveElement[2].left--;
       state.positionActiveElement[3].left -= 2;
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+          return
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        state.coordinatesAllFallElements.forEach((i) => {
+          if(i.top == item.top && i.left == item.left){
+            console.log("greate");
+            state.positionActiveElement[0].top++;
+            state.positionActiveElement[0].left--;
+            state.positionActiveElement[2].top--;
+            state.positionActiveElement[2].left++;
+            state.positionActiveElement[3].left += 2;
+            state.directionActiveFigure--;
+          }
+        })
+      })
 
       state.positionActiveElement.forEach((item) => {
         if(item.top <= 0){
@@ -766,6 +1202,33 @@ function moveTurn(){
       state.positionActiveElement[3].top -= 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+          return
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        state.coordinatesAllFallElements.forEach((i) => {
+          if(i.top == item.top && i.left == item.left){
+            console.log("greate");
+            state.positionActiveElement[0].top--;
+            state.positionActiveElement[0].left--;
+            state.positionActiveElement[2].top++;
+            state.positionActiveElement[2].left++;
+            state.positionActiveElement[3].top += 2;
+            state.directionActiveFigure--;
+          }
+        })
+      })
+
+      state.positionActiveElement.forEach((item) => {
         if(item.top <= 0){
           state.positionActiveElement.forEach((item) => item.top++)
         }
@@ -795,6 +1258,33 @@ function moveTurn(){
       state.positionActiveElement[2].top--;
       state.positionActiveElement[2].left++;
       state.positionActiveElement[3].left += 2;
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+          return
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        state.coordinatesAllFallElements.forEach((i) => {
+          if(i.top == item.top && i.left == item.left){
+            console.log("greate");
+            state.positionActiveElement[0].top--;
+            state.positionActiveElement[0].left++;
+            state.positionActiveElement[2].top++;
+            state.positionActiveElement[2].left--;
+            state.positionActiveElement[3].left -= 2;
+            state.directionActiveFigure--;
+          }
+        })
+      })
 
       state.positionActiveElement.forEach((item) => {
         if(item.top <= 0){
@@ -832,6 +1322,33 @@ function moveTurn(){
       state.positionActiveElement[3].left -= 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+          return
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        state.coordinatesAllFallElements.forEach((i) => {
+          if(i.top == item.top && i.left == item.left){
+            console.log("greate");
+            state.positionActiveElement[0].top--;
+            state.positionActiveElement[0].left--;
+            state.positionActiveElement[2].top++;
+            state.positionActiveElement[2].left++;
+            state.positionActiveElement[3].left += 2;
+            state.directionActiveFigure--;
+          }
+        })
+      })
+
+      state.positionActiveElement.forEach((item) => {
         if(item.top <= 0){
           state.positionActiveElement.forEach((item) => item.top++)
         }
@@ -861,6 +1378,33 @@ function moveTurn(){
       state.positionActiveElement[2].top--;
       state.positionActiveElement[2].left++;
       state.positionActiveElement[3].top -= 2;
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+          return
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        state.coordinatesAllFallElements.forEach((i) => {
+          if(i.top == item.top && i.left == item.left){
+            console.log("greate");
+            state.positionActiveElement[0].top--;
+            state.positionActiveElement[0].left++;
+            state.positionActiveElement[2].top++;
+            state.positionActiveElement[2].left--;
+            state.positionActiveElement[3].top += 2;
+            state.directionActiveFigure--;
+          }
+        })
+      })
 
       state.positionActiveElement.forEach((item) => {
         if(item.top <= 0){
@@ -894,6 +1438,33 @@ function moveTurn(){
       state.positionActiveElement[3].left += 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+          return
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        state.coordinatesAllFallElements.forEach((i) => {
+          if(i.top == item.top && i.left == item.left){
+            console.log("greate");
+            state.positionActiveElement[0].top++;
+            state.positionActiveElement[0].left++;
+            state.positionActiveElement[2].top--;
+            state.positionActiveElement[2].left--;
+            state.positionActiveElement[3].left -= 2;
+            state.directionActiveFigure--;
+          }
+        })
+      })
+
+      state.positionActiveElement.forEach((item) => {
         if(item.top <= 0){
           state.positionActiveElement.forEach((item) => item.top++)
         }
@@ -923,6 +1494,33 @@ function moveTurn(){
       state.positionActiveElement[2].top++;
       state.positionActiveElement[2].left--;
       state.positionActiveElement[3].top += 2;
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top >= 15){
+          state.positionActiveElement.forEach((item) => item.top--)
+          return
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        state.coordinatesAllFallElements.forEach((i) => {
+          if(i.top == item.top && i.left == item.left){
+            console.log("greate");
+            state.positionActiveElement[0].top++;
+            state.positionActiveElement[0].left--;
+            state.positionActiveElement[2].top--;
+            state.positionActiveElement[2].left++;
+            state.positionActiveElement[3].top -= 2;
+            state.directionActiveFigure--;
+          }
+        })
+      })
 
       state.positionActiveElement.forEach((item) => {
         if(item.top <= 0){
