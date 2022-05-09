@@ -34,7 +34,7 @@ function moveActiveFigure() {
 
 
 function checkDropOnAnotherElement(){
-  if(state.positionActiveElement.find((item) => arrayTable[item.top][item.left].innerHTML == '<div class="activeElement"></div>')){
+  if(state.positionActiveElement.find((item) => arrayTable[item.top][item.left].innerHTML == activeElement)){
     state.positionActiveElement.forEach((item) => {
       item.top--;
       arrayTable[item.top][item.left].innerHTML = activeElement;
@@ -100,7 +100,7 @@ function moveLeft() {
     arrayTable[item.top][item.left].innerHTML = noneActiveElement;
     item.left--;
   });
-  if(state.positionActiveElement.find((item) => item.left == -1 || arrayTable[item.top][item.left].innerHTML == '<div class="activeElement"></div>')){
+  if(state.positionActiveElement.find((item) => item.left == -1 || arrayTable[item.top][item.left].innerHTML == activeElement)){
     state.positionActiveElement.forEach((item) => {
       item.left++;
     });
@@ -116,7 +116,7 @@ function moveRight() {
     arrayTable[item.top][item.left].innerHTML = noneActiveElement;
     item.left++;
   });
-  if(state.positionActiveElement.find((item) => item.left == 14 || arrayTable[item.top][item.left].innerHTML == '<div class="activeElement"></div>')){
+  if(state.positionActiveElement.find((item) => item.left == 14 || arrayTable[item.top][item.left].innerHTML == activeElement)){
     state.positionActiveElement.forEach((item) => {
       item.left--;
     });
@@ -136,7 +136,6 @@ function moveTurn(){
 
   if(state.shapeActiveFigure == "snake"){
     if(state.directionActiveFigure == 0){
-      console.log("snake0");
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = noneActiveElement;
       });
@@ -149,10 +148,20 @@ function moveTurn(){
       state.positionActiveElement[3].left += 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.left <= -1){
+          state.positionActiveElement.forEach((item) => item.left++)
+        }
+      })
+      state.positionActiveElement.forEach((item) => {
+        if(item.left >= 14){
+          state.positionActiveElement.forEach((item) => item.left--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = activeElement;
       });
     } else if(state.directionActiveFigure == 1){
-      console.log("snake1");
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = noneActiveElement;
       });
@@ -168,7 +177,6 @@ function moveTurn(){
         arrayTable[item.top][item.left].innerHTML = activeElement;
       });
     } else if(state.directionActiveFigure == 2){
-      console.log("snake2");
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = noneActiveElement;
       });
@@ -181,10 +189,20 @@ function moveTurn(){
       state.positionActiveElement[3].left -= 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.left <= -1){
+          state.positionActiveElement.forEach((item) => item.left++)
+        }
+      })
+      state.positionActiveElement.forEach((item) => {
+        if(item.left >= 14){
+          state.positionActiveElement.forEach((item) => item.left--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = activeElement;
       });
     } else if(state.directionActiveFigure == 3){
-      console.log("snake3");
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = noneActiveElement;
       });
@@ -205,7 +223,6 @@ function moveTurn(){
 
   } else if(state.shapeActiveFigure == "pyramid"){
     if(state.directionActiveFigure == 0){
-      console.log("pyramid0");
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = noneActiveElement;
       });
@@ -216,12 +233,22 @@ function moveTurn(){
       state.positionActiveElement[2].left++;
       state.positionActiveElement[3].top++;
       state.positionActiveElement[3].left--;
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.left <= -1){
+          state.positionActiveElement.forEach((item) => item.left++)
+        }
+      })
+      state.positionActiveElement.forEach((item) => {
+        if(item.left >= 14){
+          state.positionActiveElement.forEach((item) => item.left--)
+        }
+      })
 
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = activeElement;
       });
     } else if(state.directionActiveFigure == 1){
-      console.log("pyramid1");
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = noneActiveElement;
       });
@@ -234,10 +261,20 @@ function moveTurn(){
       state.positionActiveElement[3].left--;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.left <= -1){
+          state.positionActiveElement.forEach((item) => item.left++)
+        }
+      })
+      state.positionActiveElement.forEach((item) => {
+        if(item.left >= 14){
+          state.positionActiveElement.forEach((item) => item.left--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = activeElement;
       });
     } else if(state.directionActiveFigure == 2){
-      console.log("pyramid2");
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = noneActiveElement;
       });
@@ -250,10 +287,20 @@ function moveTurn(){
       state.positionActiveElement[3].left++;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.left <= -1){
+          state.positionActiveElement.forEach((item) => item.left++)
+        }
+      })
+      state.positionActiveElement.forEach((item) => {
+        if(item.left >= 14){
+          state.positionActiveElement.forEach((item) => item.left--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = activeElement;
       });
     } else if(state.directionActiveFigure == 3){
-      console.log("pyramid3");
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = noneActiveElement;
       });
@@ -264,6 +311,17 @@ function moveTurn(){
       state.positionActiveElement[2].left++;
       state.positionActiveElement[3].top++;
       state.positionActiveElement[3].left++;
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.left <= -1){
+          state.positionActiveElement.forEach((item) => item.left++)
+        }
+      })
+      state.positionActiveElement.forEach((item) => {
+        if(item.left >= 14){
+          state.positionActiveElement.forEach((item) => item.left--)
+        }
+      })
 
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = activeElement;
@@ -274,7 +332,6 @@ function moveTurn(){
 
   } else if(state.shapeActiveFigure == "lightning"){
     if(state.directionActiveFigure == 0){
-      console.log("lightning0");
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = noneActiveElement;
       });
@@ -286,10 +343,20 @@ function moveTurn(){
       state.positionActiveElement[3].top += 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.left <= -1){
+          state.positionActiveElement.forEach((item) => item.left++)
+        }
+      })
+      state.positionActiveElement.forEach((item) => {
+        if(item.left >= 14){
+          state.positionActiveElement.forEach((item) => item.left--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = activeElement;
       });
     } else if(state.directionActiveFigure == 1){
-      console.log("lightning1");
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = noneActiveElement;
       });
@@ -301,10 +368,20 @@ function moveTurn(){
       state.positionActiveElement[3].left -= 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.left <= -1){
+          state.positionActiveElement.forEach((item) => item.left++)
+        }
+      })
+      state.positionActiveElement.forEach((item) => {
+        if(item.left >= 14){
+          state.positionActiveElement.forEach((item) => item.left--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = activeElement;
       });
     } else if(state.directionActiveFigure == 2){
-      console.log("lightning2");
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = noneActiveElement;
       });
@@ -316,10 +393,20 @@ function moveTurn(){
       state.positionActiveElement[3].top -= 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.left <= -1){
+          state.positionActiveElement.forEach((item) => item.left++)
+        }
+      })
+      state.positionActiveElement.forEach((item) => {
+        if(item.left >= 14){
+          state.positionActiveElement.forEach((item) => item.left--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = activeElement;
       });
     } else if(state.directionActiveFigure == 3){
-      console.log("lightning3");
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = noneActiveElement;
       });
@@ -329,6 +416,17 @@ function moveTurn(){
       state.positionActiveElement[2].top++;
       state.positionActiveElement[2].left++;
       state.positionActiveElement[3].left += 2;
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.left <= -1){
+          state.positionActiveElement.forEach((item) => item.left++)
+        }
+      })
+      state.positionActiveElement.forEach((item) => {
+        if(item.left >= 14){
+          state.positionActiveElement.forEach((item) => item.left--)
+        }
+      })
 
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = activeElement;
@@ -339,7 +437,6 @@ function moveTurn(){
 
   } else if(state.shapeActiveFigure == "reverseLightning"){
     if(state.directionActiveFigure == 0){
-      console.log("reverseLightning0");
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = noneActiveElement;
       });
@@ -351,10 +448,20 @@ function moveTurn(){
       state.positionActiveElement[3].left -= 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.left <= -1){
+          state.positionActiveElement.forEach((item) => item.left++)
+        }
+      })
+      state.positionActiveElement.forEach((item) => {
+        if(item.left >= 14){
+          state.positionActiveElement.forEach((item) => item.left--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = activeElement;
       });
     } else if(state.directionActiveFigure == 1){
-      console.log("reverseLightning1");
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = noneActiveElement;
       });
@@ -366,10 +473,20 @@ function moveTurn(){
       state.positionActiveElement[3].top -= 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.left <= -1){
+          state.positionActiveElement.forEach((item) => item.left++)
+        }
+      })
+      state.positionActiveElement.forEach((item) => {
+        if(item.left >= 14){
+          state.positionActiveElement.forEach((item) => item.left--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = activeElement;
       });
     } else if(state.directionActiveFigure == 2){
-      console.log("reverseLightning2");
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = noneActiveElement;
       });
@@ -381,10 +498,20 @@ function moveTurn(){
       state.positionActiveElement[3].left += 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.left <= -1){
+          state.positionActiveElement.forEach((item) => item.left++)
+        }
+      })
+      state.positionActiveElement.forEach((item) => {
+        if(item.left >= 14){
+          state.positionActiveElement.forEach((item) => item.left--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = activeElement;
       });
     } else if(state.directionActiveFigure == 3){
-      console.log("reverseLightning3");
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = noneActiveElement;
       });
@@ -396,60 +523,24 @@ function moveTurn(){
       state.positionActiveElement[3].top += 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.left <= -1){
+          state.positionActiveElement.forEach((item) => item.left++)
+        }
+      })
+      state.positionActiveElement.forEach((item) => {
+        if(item.left >= 14){
+          state.positionActiveElement.forEach((item) => item.left--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = activeElement;
       });
     };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   } else if(state.shapeActiveFigure == "horse"){
     if(state.directionActiveFigure == 0){
-      console.log("horse0");
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = noneActiveElement;
       });
@@ -461,10 +552,20 @@ function moveTurn(){
       state.positionActiveElement[3].top += 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.left <= -1){
+          state.positionActiveElement.forEach((item) => item.left++)
+        }
+      })
+      state.positionActiveElement.forEach((item) => {
+        if(item.left >= 14){
+          state.positionActiveElement.forEach((item) => item.left--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = activeElement;
       });
     } else if(state.directionActiveFigure == 1){
-      console.log("horse1");
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = noneActiveElement;
       });
@@ -476,10 +577,20 @@ function moveTurn(){
       state.positionActiveElement[3].left -= 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.left <= -1){
+          state.positionActiveElement.forEach((item) => item.left++)
+        }
+      })
+      state.positionActiveElement.forEach((item) => {
+        if(item.left >= 14){
+          state.positionActiveElement.forEach((item) => item.left--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = activeElement;
       });
     } else if(state.directionActiveFigure == 2){
-      console.log("horse2");
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = noneActiveElement;
       });
@@ -491,10 +602,20 @@ function moveTurn(){
       state.positionActiveElement[3].top -= 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.left <= -1){
+          state.positionActiveElement.forEach((item) => item.left++)
+        }
+      })
+      state.positionActiveElement.forEach((item) => {
+        if(item.left >= 14){
+          state.positionActiveElement.forEach((item) => item.left--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = activeElement;
       });
     } else if(state.directionActiveFigure == 3){
-      console.log("horse3");
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = noneActiveElement;
       });
@@ -506,60 +627,24 @@ function moveTurn(){
       state.positionActiveElement[3].left += 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.left <= -1){
+          state.positionActiveElement.forEach((item) => item.left++)
+        }
+      })
+      state.positionActiveElement.forEach((item) => {
+        if(item.left >= 14){
+          state.positionActiveElement.forEach((item) => item.left--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = activeElement;
       });
     };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   } else if(state.shapeActiveFigure == "reverseHorse"){
     if(state.directionActiveFigure == 0){
-      console.log("reverseHorse0");
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = noneActiveElement;
       });
@@ -571,10 +656,20 @@ function moveTurn(){
       state.positionActiveElement[3].left -= 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.left <= -1){
+          state.positionActiveElement.forEach((item) => item.left++)
+        }
+      })
+      state.positionActiveElement.forEach((item) => {
+        if(item.left >= 14){
+          state.positionActiveElement.forEach((item) => item.left--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = activeElement;
       });
     } else if(state.directionActiveFigure == 1){
-      console.log("reverseHorse1");
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = noneActiveElement;
       });
@@ -586,10 +681,20 @@ function moveTurn(){
       state.positionActiveElement[3].top -= 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.left <= -1){
+          state.positionActiveElement.forEach((item) => item.left++)
+        }
+      })
+      state.positionActiveElement.forEach((item) => {
+        if(item.left >= 14){
+          state.positionActiveElement.forEach((item) => item.left--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = activeElement;
       });
     } else if(state.directionActiveFigure == 2){
-      console.log("reverseHorse2");
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = noneActiveElement;
       });
@@ -601,10 +706,20 @@ function moveTurn(){
       state.positionActiveElement[3].left += 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.left <= -1){
+          state.positionActiveElement.forEach((item) => item.left++)
+        }
+      })
+      state.positionActiveElement.forEach((item) => {
+        if(item.left >= 14){
+          state.positionActiveElement.forEach((item) => item.left--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = activeElement;
       });
     } else if(state.directionActiveFigure == 3){
-      console.log("reverseHorse3");
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = noneActiveElement;
       });
@@ -616,34 +731,22 @@ function moveTurn(){
       state.positionActiveElement[3].top += 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.left <= -1){
+          state.positionActiveElement.forEach((item) => item.left++)
+        }
+      })
+      state.positionActiveElement.forEach((item) => {
+        if(item.left >= 14){
+          state.positionActiveElement.forEach((item) => item.left--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = activeElement;
       });
     };
   };
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
