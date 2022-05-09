@@ -1,5 +1,6 @@
 var arrayString = [];
 var arrayTable = [];
+var speedGame = 500;
 informationOfNewElement();
 
 function startGame() {
@@ -15,7 +16,10 @@ function startGame() {
     arrayTable.push(arrayString);
     petem++;
   }
-  timer = setInterval(moveActiveFigure, 500);
+  state.positionActiveElement.forEach((item) => {
+    arrayTable[item.top][item.left].innerHTML = activeElement;
+  });
+  timer = setInterval(moveActiveFigure, speedGame);
 };
 
 function moveActiveFigure() {
@@ -148,6 +152,12 @@ function moveTurn(){
       state.positionActiveElement[3].left += 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.top <= 0){
+          state.positionActiveElement.forEach((item) => item.top++)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         if(item.left <= -1){
           state.positionActiveElement.forEach((item) => item.left++)
         }
@@ -155,6 +165,19 @@ function moveTurn(){
       state.positionActiveElement.forEach((item) => {
         if(item.left >= 14){
           state.positionActiveElement.forEach((item) => item.left--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        if(item == state.coordinatesAllFallElements){
+          state.positionActiveElement.forEach((item) => {
+            state.positionActiveElement[0].top++;
+            state.positionActiveElement[0].left++;
+            state.positionActiveElement[2].top--;
+            state.positionActiveElement[2].left--;
+            state.positionActiveElement[3].top -= 2;
+            state.positionActiveElement[3].left -= 2;
+          })
         }
       })
 
@@ -174,6 +197,25 @@ function moveTurn(){
       state.positionActiveElement[3].left -=2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.top <= 0){
+          state.positionActiveElement.forEach((item) => item.top++)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        if(item == state.coordinatesAllFallElements){
+          state.positionActiveElement.forEach((item) => {
+            state.positionActiveElement[0].top++;
+            state.positionActiveElement[0].left--;
+            state.positionActiveElement[2].top++;
+            state.positionActiveElement[2].left--;
+            state.positionActiveElement[3].top -= 2;
+            state.positionActiveElement[3].left += 2;
+          })
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = activeElement;
       });
     } else if(state.directionActiveFigure == 2){
@@ -189,6 +231,12 @@ function moveTurn(){
       state.positionActiveElement[3].left -= 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.top <= 0){
+          state.positionActiveElement.forEach((item) => item.top++)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         if(item.left <= -1){
           state.positionActiveElement.forEach((item) => item.left++)
         }
@@ -196,6 +244,19 @@ function moveTurn(){
       state.positionActiveElement.forEach((item) => {
         if(item.left >= 14){
           state.positionActiveElement.forEach((item) => item.left--)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        if(item == state.coordinatesAllFallElements){
+          state.positionActiveElement.forEach((item) => {
+            state.positionActiveElement[0].top--;
+            state.positionActiveElement[0].left--;
+            state.positionActiveElement[2].top++;
+            state.positionActiveElement[2].left++;
+            state.positionActiveElement[3].top += 2;
+            state.positionActiveElement[3].left += 2;
+          })
         }
       })
 
@@ -213,6 +274,25 @@ function moveTurn(){
       state.positionActiveElement[2].left++;
       state.positionActiveElement[3].top -= 2;
       state.positionActiveElement[3].left +=2;
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top <= 0){
+          state.positionActiveElement.forEach((item) => item.top++)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
+        if(item == state.coordinatesAllFallElements){
+          state.positionActiveElement.forEach((item) => {
+            state.positionActiveElement[0].top--;
+            state.positionActiveElement[0].left++;
+            state.positionActiveElement[2].top--;
+            state.positionActiveElement[2].left++;
+            state.positionActiveElement[3].top += 2;
+            state.positionActiveElement[3].left -= 2;
+          })
+        }
+      })
 
       state.positionActiveElement.forEach((item) => {
         arrayTable[item.top][item.left].innerHTML = activeElement;
@@ -235,6 +315,12 @@ function moveTurn(){
       state.positionActiveElement[3].left--;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.top <= 0){
+          state.positionActiveElement.forEach((item) => item.top++)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         if(item.left <= -1){
           state.positionActiveElement.forEach((item) => item.left++)
         }
@@ -259,6 +345,12 @@ function moveTurn(){
       state.positionActiveElement[2].left--;
       state.positionActiveElement[3].top--;
       state.positionActiveElement[3].left--;
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top <= 0){
+          state.positionActiveElement.forEach((item) => item.top++)
+        }
+      })
 
       state.positionActiveElement.forEach((item) => {
         if(item.left <= -1){
@@ -287,6 +379,12 @@ function moveTurn(){
       state.positionActiveElement[3].left++;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.top <= 0){
+          state.positionActiveElement.forEach((item) => item.top++)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         if(item.left <= -1){
           state.positionActiveElement.forEach((item) => item.left++)
         }
@@ -311,6 +409,12 @@ function moveTurn(){
       state.positionActiveElement[2].left++;
       state.positionActiveElement[3].top++;
       state.positionActiveElement[3].left++;
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top <= 0){
+          state.positionActiveElement.forEach((item) => item.top++)
+        }
+      })
 
       state.positionActiveElement.forEach((item) => {
         if(item.left <= -1){
@@ -343,6 +447,12 @@ function moveTurn(){
       state.positionActiveElement[3].top += 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.top <= 0){
+          state.positionActiveElement.forEach((item) => item.top++)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         if(item.left <= -1){
           state.positionActiveElement.forEach((item) => item.left++)
         }
@@ -366,6 +476,12 @@ function moveTurn(){
       state.positionActiveElement[2].top--;
       state.positionActiveElement[2].left--;
       state.positionActiveElement[3].left -= 2;
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top <= 0){
+          state.positionActiveElement.forEach((item) => item.top++)
+        }
+      })
 
       state.positionActiveElement.forEach((item) => {
         if(item.left <= -1){
@@ -393,6 +509,12 @@ function moveTurn(){
       state.positionActiveElement[3].top -= 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.top <= 0){
+          state.positionActiveElement.forEach((item) => item.top++)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         if(item.left <= -1){
           state.positionActiveElement.forEach((item) => item.left++)
         }
@@ -416,6 +538,12 @@ function moveTurn(){
       state.positionActiveElement[2].top++;
       state.positionActiveElement[2].left++;
       state.positionActiveElement[3].left += 2;
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top <= 0){
+          state.positionActiveElement.forEach((item) => item.top++)
+        }
+      })
 
       state.positionActiveElement.forEach((item) => {
         if(item.left <= -1){
@@ -448,6 +576,12 @@ function moveTurn(){
       state.positionActiveElement[3].left -= 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.top <= 0){
+          state.positionActiveElement.forEach((item) => item.top++)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         if(item.left <= -1){
           state.positionActiveElement.forEach((item) => item.left++)
         }
@@ -471,6 +605,12 @@ function moveTurn(){
       state.positionActiveElement[2].top--;
       state.positionActiveElement[2].left--;
       state.positionActiveElement[3].top -= 2;
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top <= 0){
+          state.positionActiveElement.forEach((item) => item.top++)
+        }
+      })
 
       state.positionActiveElement.forEach((item) => {
         if(item.left <= -1){
@@ -498,6 +638,12 @@ function moveTurn(){
       state.positionActiveElement[3].left += 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.top <= 0){
+          state.positionActiveElement.forEach((item) => item.top++)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         if(item.left <= -1){
           state.positionActiveElement.forEach((item) => item.left++)
         }
@@ -521,6 +667,12 @@ function moveTurn(){
       state.positionActiveElement[2].top++;
       state.positionActiveElement[2].left++;
       state.positionActiveElement[3].top += 2;
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top <= 0){
+          state.positionActiveElement.forEach((item) => item.top++)
+        }
+      })
 
       state.positionActiveElement.forEach((item) => {
         if(item.left <= -1){
@@ -552,6 +704,12 @@ function moveTurn(){
       state.positionActiveElement[3].top += 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.top <= 0){
+          state.positionActiveElement.forEach((item) => item.top++)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         if(item.left <= -1){
           state.positionActiveElement.forEach((item) => item.left++)
         }
@@ -575,6 +733,12 @@ function moveTurn(){
       state.positionActiveElement[2].top++;
       state.positionActiveElement[2].left--;
       state.positionActiveElement[3].left -= 2;
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top <= 0){
+          state.positionActiveElement.forEach((item) => item.top++)
+        }
+      })
 
       state.positionActiveElement.forEach((item) => {
         if(item.left <= -1){
@@ -602,6 +766,12 @@ function moveTurn(){
       state.positionActiveElement[3].top -= 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.top <= 0){
+          state.positionActiveElement.forEach((item) => item.top++)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         if(item.left <= -1){
           state.positionActiveElement.forEach((item) => item.left++)
         }
@@ -625,6 +795,12 @@ function moveTurn(){
       state.positionActiveElement[2].top--;
       state.positionActiveElement[2].left++;
       state.positionActiveElement[3].left += 2;
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top <= 0){
+          state.positionActiveElement.forEach((item) => item.top++)
+        }
+      })
 
       state.positionActiveElement.forEach((item) => {
         if(item.left <= -1){
@@ -656,6 +832,12 @@ function moveTurn(){
       state.positionActiveElement[3].left -= 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.top <= 0){
+          state.positionActiveElement.forEach((item) => item.top++)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         if(item.left <= -1){
           state.positionActiveElement.forEach((item) => item.left++)
         }
@@ -679,6 +861,12 @@ function moveTurn(){
       state.positionActiveElement[2].top--;
       state.positionActiveElement[2].left++;
       state.positionActiveElement[3].top -= 2;
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top <= 0){
+          state.positionActiveElement.forEach((item) => item.top++)
+        }
+      })
 
       state.positionActiveElement.forEach((item) => {
         if(item.left <= -1){
@@ -706,6 +894,12 @@ function moveTurn(){
       state.positionActiveElement[3].left += 2;
 
       state.positionActiveElement.forEach((item) => {
+        if(item.top <= 0){
+          state.positionActiveElement.forEach((item) => item.top++)
+        }
+      })
+
+      state.positionActiveElement.forEach((item) => {
         if(item.left <= -1){
           state.positionActiveElement.forEach((item) => item.left++)
         }
@@ -729,6 +923,12 @@ function moveTurn(){
       state.positionActiveElement[2].top++;
       state.positionActiveElement[2].left--;
       state.positionActiveElement[3].top += 2;
+
+      state.positionActiveElement.forEach((item) => {
+        if(item.top <= 0){
+          state.positionActiveElement.forEach((item) => item.top++)
+        }
+      })
 
       state.positionActiveElement.forEach((item) => {
         if(item.left <= -1){
@@ -791,3 +991,22 @@ function informationOfNewElement(){
     state.shapeActiveFigure =  "reverseHorse";
   };
 }
+
+
+
+document.addEventListener('keyup', function(event){
+    if (event.code == "ArrowLeft") {
+        moveLeft();
+    }
+});
+document.addEventListener('keyup', function(event){
+    if (event.code == "ArrowUp") {
+        moveTurn();
+    }
+});
+document.addEventListener('keyup', function(event){
+    if (event.code == "ArrowRight") {
+        moveRight();
+    }
+});
+

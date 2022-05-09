@@ -41,6 +41,7 @@ var state = {
     coordinatesAllFallElements: [],
     directionActiveFigure: 0,
     shapeActiveFigure: "snake",
+    speedGame: 500,
 };
 
 
