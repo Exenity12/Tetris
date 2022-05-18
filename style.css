@@ -22,6 +22,12 @@
     left: 300px;
 }
 
+.counter {
+    position: absolute;
+    top: 50px;
+    left: 325px;
+}
+
 .button-left {
     position: absolute;
     top: 330px;

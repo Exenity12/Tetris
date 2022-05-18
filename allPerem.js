@@ -8,7 +8,8 @@ function clearTime() {
     var z = clearInterval(timer);
 };
 
-
+const counter = document.querySelector('.counter');
+counterNumber = 0;
 const theWholeTable = document.querySelector('.table');
 var tableSquareVertSize = 15;
 var tableSquareHorizonSize = 14;
@@ -38,7 +39,7 @@ const item = document.querySelectorAll('.item');
 
 var state = {
     positionActiveElement: "",
-    coordinatesAllFallElements: [],
+    coordinatesAllFallElements: [{top: 15, left: 15}],
     directionActiveFigure: 0,
     shapeActiveFigure: "snake",
 };

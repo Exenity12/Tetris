@@ -1,6 +1,7 @@
 var arrayString = [];
 var arrayTable = [];
-var speedGame = 500;
+var speedGame = 400;
+var x;
 informationOfNewElement();
 
 function startGame() {
@@ -19,9 +20,9 @@ function startGame() {
   state.positionActiveElement.forEach((item) => {
     arrayTable[item.top][item.left].innerHTML = activeElement;
   });
-  timer = setInterval(moveActiveFigure, speedGame);
+  timer = setTimeout(moveActiveFigure, speedGame);
 };
-
+ 
 function moveActiveFigure() {
   state.positionActiveElement.forEach((item) => {
     arrayTable[item.top][item.left].innerHTML = noneActiveElement;
@@ -34,20 +35,23 @@ function moveActiveFigure() {
     arrayTable[item.top][item.left].innerHTML = activeElement;
   });
   nextElement();
+  timer = setTimeout(moveActiveFigure, speedGame);
 };
 
 
 function checkDropOnAnotherElement(){
-  if(state.positionActiveElement.find((item) => arrayTable[item.top][item.left].innerHTML == activeElement)){
-    state.positionActiveElement.forEach((item) => {
-      item.top--;
-      arrayTable[item.top][item.left].innerHTML = activeElement;
-      state.coordinatesAllFallElements.push(item);
-      informationOfNewElement();
-    });
-    fall();
-    return;
-  };
+  state.coordinatesAllFallElements.forEach((fall) => {
+    if(state.positionActiveElement.find((active) => active.top == fall.top && active.left == fall.left)){
+      state.positionActiveElement.forEach((item) => {
+        item.top--;
+        arrayTable[item.top][item.left].innerHTML = activeElement;
+        state.coordinatesAllFallElements.push(item);
+        informationOfNewElement();
+      });
+      fallFigure();
+      return;
+    };
+  })
 };
 
 
@@ -59,16 +63,18 @@ function nextElement() {
       state.coordinatesAllFallElements.push(item);
       informationOfNewElement();
     });
-    fall();
+    fallFigure();
   };
 }
 
 
-function fall() {
+function fallFigure() {
   let numberString = tableSquareVertSize;
   while(numberString > 0){
     newArray = state.coordinatesAllFallElements.filter(item => item.top == numberString);
     if(newArray.length >= 14){
+      counterNumber++;
+      counter.innerHTML = counterNumber;
       console.log(numberString, " удалить эту строку");
       let numberElement = 0;
       while(numberElement < state.coordinatesAllFallElements.length){
@@ -93,50 +99,92 @@ function fall() {
         };
         moveString++;
       };
+      numberString++;
     };
     numberString--;
   };
 };
 
 
+
 function moveLeft() {
-  state.positionActiveElement.forEach((item) => {
-    arrayTable[item.top][item.left].innerHTML = noneActiveElement;
-    item.left--;
-  });
-  if(state.positionActiveElement.find((item) => item.left == -1 || arrayTable[item.top][item.left].innerHTML == activeElement)){
-    state.positionActiveElement.forEach((item) => {
-      item.left++;
-    });
+  let isCollision = false;
+  state.coordinatesAllFallElements.forEach((arrayItem) => {
+    isCollision = state.positionActiveElement
+      .find((item) => (item.left == 0)
+        || ((item.left - 1) == arrayItem.left && item.top == arrayItem.top)
+      );
+  })
+  if(isCollision){
+    return
   };
-  state.positionActiveElement.forEach((item) => {
-    arrayTable[item.top][item.left].innerHTML = activeElement;
+  state.positionActiveElement.forEach((active) => {
+    arrayTable[active.top][active.left].innerHTML = noneActiveElement;
+    active.left--;
   });
+  draw();
 };
+
+
+let previousState;
+function draw(){
+  // добавить проверку с previousState и отрисовать изминившиеся
+  // перебрать элементы coordinatesAllFallElements и отобразить их в аррау табле
+  // сохранить coordinatesAllFallElements в previousState
+  state.positionActiveElement.forEach((active) => {
+    arrayTable[active.top][active.left].innerHTML = activeElement;
+  });
+}
 
 
 function moveRight() {
-  state.positionActiveElement.forEach((item) => {
-    arrayTable[item.top][item.left].innerHTML = noneActiveElement;
-    item.left++;
+  state.coordinatesAllFallElements.forEach((i) => {
+    if(state.positionActiveElement.find((item) => ((item.left + 1) == 14) || ((item.left + 1) == i.left && item.top == i.top))){
+      state.positionActiveElement.forEach((item) => {
+        item.left--;
+      });
+    };
+  })
+  state.positionActiveElement.forEach((active) => {
+    arrayTable[active.top][active.left].innerHTML = noneActiveElement;
+    active.left++;
   });
-  if(state.positionActiveElement.find((item) => item.left == 14 || arrayTable[item.top][item.left].innerHTML == activeElement)){
-    state.positionActiveElement.forEach((item) => {
-      item.left--;
+  draw();
+};
+
+function moveDown(){
+  let t = state.positionActiveElement.sort(t => t.top)
+  x = t[3].top;
+  moveWhileDown();
+  while(x < 13){
+    state.positionActiveElement.forEach((active) => {
+      arrayTable[active.top][active.left].innerHTML = noneActiveElement;
+      active.top++;
     });
+    moveWhileDown();
+    x++;
   };
-  state.positionActiveElement.forEach((item) => {
-    arrayTable[item.top][item.left].innerHTML = activeElement;
+  draw();
+};
+
+
+function moveWhileDown(){
+  state.positionActiveElement.forEach((active) => {
+    state.coordinatesAllFallElements.forEach((item) => {
+      if(active.left == item.left && active.top == (item.top - 1)){
+        x += 14;
+      };
+    });
   });
 };
+
 
 
 function moveTurn(){
   state.directionActiveFigure++;
   if(state.directionActiveFigure >= 4){
     state.directionActiveFigure = 0;
-  };
-
+};
 
   if(state.shapeActiveFigure == "snake"){
     if(state.directionActiveFigure == 0){
@@ -1552,6 +1600,7 @@ function moveTurn(){
 
 
 function informationOfNewElement(){
+  speedGame = 500;
   let activeFigure = getRandomIntInclusive(0, 6);
   if(activeFigure == 0){
     state.positionActiveElement = [{top: 0, left: 7}, {top: 0, left: 8}, {top: 0, left: 9}, {top: 0, left: 10}];
@@ -1607,4 +1656,8 @@ document.addEventListener('keyup', function(event){
         moveRight();
     }
 });
-
+document.addEventListener('keyup', function(event){
+    if (event.code == "ArrowDown") {
+        moveDown()
+    }
+});
