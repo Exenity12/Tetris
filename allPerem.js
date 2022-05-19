@@ -4,8 +4,12 @@ function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+var gameIsTrue = false;
+
 function clearTime() {
+    console.log("Game over");
     var z = clearInterval(timer);
+    gameIsTrue = true;
 };
 
 const counter = document.querySelector('.counter');

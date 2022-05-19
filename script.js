@@ -24,6 +24,9 @@ function startGame() {
 };
  
 function moveActiveFigure() {
+  if(gameIsTrue){
+    return;
+  };
   state.positionActiveElement.forEach((item) => {
     arrayTable[item.top][item.left].innerHTML = noneActiveElement;
     item.top++;
@@ -153,8 +156,12 @@ function moveRight() {
 };
 
 function moveDown(){
-  let t = state.positionActiveElement.sort(t => t.top)
-  x = t[3].top;
+  t = [];
+  state.positionActiveElement.forEach((u) => t.push(u.top))
+  t.sort(function (a, b) {
+    return a - b;
+  })
+  x = t[3];
   moveWhileDown();
   while(x < 13){
     state.positionActiveElement.forEach((active) => {
@@ -1600,7 +1607,6 @@ function moveTurn(){
 
 
 function informationOfNewElement(){
-  speedGame = 500;
   let activeFigure = getRandomIntInclusive(0, 6);
   if(activeFigure == 0){
     state.positionActiveElement = [{top: 0, left: 7}, {top: 0, left: 8}, {top: 0, left: 9}, {top: 0, left: 10}];
@@ -1637,6 +1643,13 @@ function informationOfNewElement(){
     state.directionActiveFigure = 0;
     state.shapeActiveFigure =  "reverseHorse";
   };
+  state.positionActiveElement.forEach((active) => {
+    state.coordinatesAllFallElements.find((item) => {
+      if(active.top == item.top && active.left == item.left){
+        clearTime();
+      }
+    })
+  })
 }
 
 
