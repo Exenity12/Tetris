@@ -5,9 +5,10 @@ function getRandomIntInclusive(min, max) {
 };
 
 var gameIsTrue = false;
+var fallIsTrue = false;
 
 function clearTime() {
-    console.log("Game over");
+    alert("Game over");
     var z = clearInterval(timer);
     gameIsTrue = true;
 };

@@ -24,6 +24,7 @@ function startGame() {
 };
  
 function moveActiveFigure() {
+  fallIsTrue = false;
   if(gameIsTrue){
     return;
   };
@@ -34,9 +35,7 @@ function moveActiveFigure() {
   if(checkDropOnAnotherElement()){
     return;
   };
-  state.positionActiveElement.forEach((item) => {
-    arrayTable[item.top][item.left].innerHTML = activeElement;
-  });
+  draw()
   nextElement();
   timer = setTimeout(moveActiveFigure, speedGame);
 };
@@ -156,6 +155,9 @@ function moveRight() {
 };
 
 function moveDown(){
+  if(fallIsTrue){
+    return;
+  }
   t = [];
   state.positionActiveElement.forEach((u) => t.push(u.top))
   t.sort(function (a, b) {
@@ -1650,6 +1652,7 @@ function informationOfNewElement(){
       }
     })
   })
+  fallIsTrue = true;
 }
 
 
